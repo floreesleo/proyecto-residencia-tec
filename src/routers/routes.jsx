@@ -1,21 +1,23 @@
 import { Routes, Route } from "react-router-dom";
 
-import NotFound from "./../components/colegio-arq/NotFound";
-import Home from "./../components/colegio-arq/Home";
-import AboutUs from "./../components/colegio-arq/AboutUs";
-import Login from "./../components/autentication/Login";
-import Dashboard from "./../components/app/Dashboard";
-import Perfil from "./../components/app/Perfil";
+import NotFound from "./../components/app/NotFound";
+import Home from "./../components/app/Home";
+import AboutUs from "./../components/app/colegio/SobreNosotros";
+import Login from "./../components/auth/Login";
+import Registro from "./../components/auth/Registro";
+import Perfil from "./../components/app/Perfil/Perfil";
+import Files from "../components/app/docs/Archivos";
 
 export default function MyRoutes() {
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
       <Route path="/" element={<Home />} />
-      <Route path="/sobre-nosotros" element={<AboutUs />} />
+      <Route path="/nosotros" element={<AboutUs />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/registro" element={<Registro />} />
       <Route path="/perfil" element={<Perfil />} />
+      <Route path="/archivos" element={<Files />} />
     </Routes>
   );
 }

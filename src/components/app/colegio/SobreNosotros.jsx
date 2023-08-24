@@ -1,4 +1,4 @@
-import NavBar from "./NavBar";
+import NavBar from "./../Nav";
 import { Container, Card } from "react-bootstrap";
 
 export default function AboutUs() {
@@ -10,7 +10,6 @@ export default function AboutUs() {
         <Card>
           <Card.Body>
             <Card.Title>Misión</Card.Title>
-            <Card.Subtitle>Colegio de arquitectos Chiapanecos</Card.Subtitle>
             <Card.Text>
               Lorem ipsum dolor sit amet consectetur adipiscing elit iaculis et
               dignissim ornare sociis, elementum interdum odio per habitant
@@ -23,7 +22,6 @@ export default function AboutUs() {
         <Card>
           <Card.Body>
             <Card.Title>Visión</Card.Title>
-            <Card.Subtitle>Colegio de arquitectos Chiapanecos</Card.Subtitle>
             <Card.Text>
               Ante aptent sem nostra urna luctus nascetur metus sociosqu libero,
               sollicitudin congue himenaeos justo sed vivamus inceptos porttitor
