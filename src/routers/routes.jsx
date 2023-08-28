@@ -12,12 +12,14 @@ export default function MyRoutes() {
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
+      {/* APP */}
       <Route path="/" element={<Home />} />
       <Route path="/nosotros" element={<AboutUs />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/registro" element={<Registro />} />
       <Route path="/perfil" element={<Perfil />} />
       <Route path="/archivos" element={<Files />} />
+      {/* AUTH */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/registro" element={<Registro />} />
     </Routes>
   );
 }

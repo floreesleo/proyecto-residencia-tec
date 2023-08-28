@@ -1,16 +1,15 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { supabase } from "./../supabase/client";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const AuthContextProvider = ({ children }) => {
-  // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState([]);
 
   //? Navegador
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   //? Alertas
   const [message, setMessage] = useState("");
@@ -25,10 +24,10 @@ export const AuthContextProvider = ({ children }) => {
 
       if (error) {
         setError("A ocurrido un error durante la autenticación: " + error);
-      } else {
-        setMessage("Revice su bandeja para futuras instrucciones.");
-        return data;
       }
+
+      setMessage("Revice su bandeja para futuras instrucciones.");
+      return data;
     } catch (error) {
       console.error(error);
     }
@@ -50,12 +49,13 @@ export const AuthContextProvider = ({ children }) => {
         console.log("Sesión de supabase: ", session);
         console.log("Evento de supabase ", event);
 
-        // if (session == null) {
-        //   navigate("/login");
-        // } else {
-        //   setUser(session?.user);
-        //   navigate("/dashboard");
-        // }
+        if (session == null) {
+          navigate("/login", { replace: true });
+        } else {
+          setUser(session?.user.user_metadata);
+          console.log("Data del usuario: ", session?.user.user_metadata);
+          navigate("/dashboard", { replace: true });
+        }
       }
     );
     return () => {

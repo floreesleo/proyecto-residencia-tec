@@ -8,8 +8,11 @@ import {
 } from "react-bootstrap";
 import NavBar from "./../Nav";
 import { useState } from "react";
+import { UserAuth } from "../../../context/AuthContext";
 
 export default function Perfil() {
+  const { user, signOut } = UserAuth();
+
   const [show, setShow] = useState(false);
 
   return (
@@ -17,21 +20,17 @@ export default function Perfil() {
       <NavBar />
       <Container className="justify-content-center">
         <Card style={{ width: "18rem" }}>
-          <Card.Img
-            variant="top"
-            src="./../../assets/brujula-de-dibujo-negrita.svg"
-          />
+          <Card.Img variant="top" src={user.picture} />
           <Card.Body>
-            <Card.Title>Usuario</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the cards content.
-            </Card.Text>
+            <Card.Title>{user.name}</Card.Title>
+            <Card.Text>{user.email}</Card.Text>
             <ButtonGroup aria-label="Basic example">
               <Button variant="primary" onClick={() => setShow(true)}>
                 Actualizar perfil
               </Button>
-              <Button variant="danger">Cerrar sesión</Button>
+              <Button variant="danger" onClick={signOut}>
+                Cerrar sesión
+              </Button>
             </ButtonGroup>
           </Card.Body>
         </Card>
