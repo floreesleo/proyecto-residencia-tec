@@ -9,9 +9,11 @@ import {
 import NavBar from "./../Nav";
 import { useState } from "react";
 import { UserAuth } from "../../../context/AuthContext";
+import { useSession } from "@supabase/auth-helpers-react";
 
 export default function Perfil() {
-  const { user, signOut } = UserAuth();
+  const { signOut } = UserAuth();
+  const sessionSupabase = useSession();
 
   const [show, setShow] = useState(false);
 
@@ -20,15 +22,15 @@ export default function Perfil() {
       <NavBar />
       <Container className="justify-content-center">
         <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={user.picture} />
+          <Card.Img variant="top" src={sessionSupabase.user.picture} />
           <Card.Body>
-            <Card.Title>{user.name}</Card.Title>
-            <Card.Text>{user.email}</Card.Text>
+            <Card.Title>{sessionSupabase.user.name}</Card.Title>
+            <Card.Text>{sessionSupabase.user.email}</Card.Text>
             <ButtonGroup aria-label="Basic example">
               <Button variant="primary" onClick={() => setShow(true)}>
                 Actualizar perfil
               </Button>
-              <Button variant="danger" onClick={signOut}>
+              <Button variant="danger" onClick={() => signOut()}>
                 Cerrar sesión
               </Button>
             </ButtonGroup>

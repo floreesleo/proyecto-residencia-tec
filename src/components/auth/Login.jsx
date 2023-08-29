@@ -29,7 +29,7 @@ export default function Login() {
               </Form.Group>
               <Form.Group>
                 <Button
-                  onClick={signInWithGoogle}
+                  onClick={() => signInWithGoogle()}
                   className="mt-2"
                   variant="success"
                 >
