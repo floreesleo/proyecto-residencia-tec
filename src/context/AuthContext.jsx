@@ -56,11 +56,11 @@ export const AuthContextProvider = ({ children }) => {
         console.log("Evento de supabase ", event);
 
         if (session == null) {
-          navigate("/login", { replace: true });
+          navigate("/login");
         } else {
           setUser(session?.user.user_metadata);
           console.log("Data del usuario: ", session?.user.user_metadata);
-          navigate("/", { replace: true });
+          navigate("/");
         }
       }
     );
