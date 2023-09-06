@@ -3,16 +3,38 @@ import { Button, Modal, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons";
 
+// SUPABASE
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { supabase } from "./../../../../supabase/client";
+
 export default function AddButtonFolder() {
+  const supabaseClient = useSupabaseClient();
+
   const [showFolder, setShowFolder] = useState(false);
   const [nameFolder, setNameFolder] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  async function handleCreateFolder() {
+    // if (currentFolder == null) return;
 
-    // Crear una carpeta en supabase
+    //| Crear una carpeta en supabase
+    try {
+      const { error } = await supabase
+        .from("folders")
+        .insert({
+          name: nameFolder,
+          userId: supabaseClient.user.id,
+          // parentId: currentFolder.id,
+          createdAt: new Date().toISOString(),
+        })
+        .single();
+
+      if (error) throw error;
+    } catch (error) {
+      console.error(error);
+    }
     // el id del padre
     // el id del usuario
+    //! parentId: currentFolder.id;
     // path es para la navegacion de la carpeta, saber si tiene padre
     // saber cuando se creó la carpeta
 
@@ -43,7 +65,7 @@ export default function AddButtonFolder() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleCreateFolder}>
             <Form.Group>
               <Form.Label>Nombre de la carpeta</Form.Label>
               <Form.Control
