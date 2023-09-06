@@ -3,7 +3,8 @@ import { UserAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 export default function Login() {
-  const { signInWithGoogle, message, error } = UserAuth();
+  const { signInWithGoogle, error, message, setEmailRef, setPasswordRef } =
+    UserAuth();
 
   return (
     <>
@@ -16,27 +17,35 @@ export default function Login() {
             <Form>
               <Form.Group>
                 <Form.Label>Correo electronico</Form.Label>
-                <Form.Control type="email" placeholder="example@example.com" />
+                <Form.Control
+                  type="email"
+                  placeholder="example@example.com"
+                  onChange={(ev) => setEmailRef(ev.target.value)}
+                />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Contraseña</Form.Label>
-                <Form.Control type="password" placeholder="****************" />
+                <Form.Control
+                  type="password"
+                  placeholder="****************"
+                  onChange={(ev) => setPasswordRef(ev.target.value)}
+                />
               </Form.Group>
               <Form.Group>
                 <Button type="submit" className="mt-2" variant="primary">
                   Iniciar sesión
                 </Button>
               </Form.Group>
-              <Form.Group>
-                <Button
-                  onClick={() => signInWithGoogle()}
-                  className="mt-2"
-                  variant="success"
-                >
-                  Iniciar sesión con Google
-                </Button>
-              </Form.Group>
             </Form>
+            <Form.Group>
+              <Button
+                onClick={() => signInWithGoogle()}
+                className="mt-2"
+                variant="success"
+              >
+                Iniciar sesión con Google
+              </Button>
+            </Form.Group>
           </Card.Body>
         </Card>
         <Button variant="link">Olvidaste tu contraseña?</Button>

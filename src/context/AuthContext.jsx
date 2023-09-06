@@ -11,6 +11,10 @@ export const AuthContextProvider = ({ children }) => {
   const sessionSupabase = useSession();
   const supabaseClient = useSupabaseClient();
 
+  //? Usuario
+  const [emailRef, setEmailRef] = useState("");
+  const [passwordRef, setPasswordRef] = useState("");
+
   //? Navegador
   const navigate = useNavigate();
 
@@ -19,6 +23,28 @@ export const AuthContextProvider = ({ children }) => {
   const [error, setError] = useState("");
 
   //? FUNCIONES
+  async function signUpAccount(e) {
+    e.preventDefault();
+
+    try {
+      const { data, error } = await supabaseClient.auth.signUp({
+        email: emailRef,
+        password: passwordRef,
+      });
+
+      if (error) {
+        setError(
+          "A ocurrido un error durante la creación de la cuenta 😥: " + error
+        );
+      }
+
+      setMessage("Revice su bandeja para futuras instrucciones");
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   async function signInWithGoogle() {
     try {
       const { data, error } = await supabaseClient.auth.signInWithOAuth({
@@ -32,10 +58,11 @@ export const AuthContextProvider = ({ children }) => {
         setError("A ocurrido un error durante la autenticación: " + error);
       }
 
-      setMessage("Revice su bandeja para futuras instrucciones.");
+      setMessage("Autenticación con Google valida");
       return data;
     } catch (error) {
       console.error(error);
+      setError("A ocurrido un error durante la autenticación: " + error);
     }
   }
 
@@ -52,6 +79,7 @@ export const AuthContextProvider = ({ children }) => {
       async (event, session) => {
         //| el event es para saber si se ha cerrado sesión, si ha iniciado sesión, si ha cambiado el usuario
         //| con session puedo saber si ya hay sesion iniciada o no hay nada
+        console.log("#####################################");
         console.log("Sesión de supabase: ", session);
         console.log("Evento de supabase ", event);
 
@@ -73,12 +101,15 @@ export const AuthContextProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        signUpAccount,
         signInWithGoogle,
         signOut,
         user,
         message,
         error,
         sessionSupabase,
+        setEmailRef,
+        setPasswordRef,
       }}
     >
       {children}
