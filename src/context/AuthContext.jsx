@@ -94,18 +94,18 @@ export const AuthContextProvider = ({ children }) => {
     e.preventDefault();
 
     try {
-      const { data, error } = await supabaseClient.auth.resetPasswordForEmail({
-        email: emailRef,
+      const { error } = await supabaseClient.auth.resetPasswordForEmail({
+        emailRef,
       });
 
-      if (error)
+      if (error) {
         setError(
           "A ocurrido un error durante el restablecimiento de contraseña 😥: " +
-            error
+            error.message
         );
-
-      setMessage("Revice su bandeja para futuras instrucciones");
-      return data;
+      } else {
+        setMessage("Revice su bandeja para futuras instrucciones");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -157,7 +157,6 @@ export const AuthContextProvider = ({ children }) => {
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const UserAuth = () => {
   return useContext(AuthContext);
 };
