@@ -23,6 +23,24 @@ export const AuthContextProvider = ({ children }) => {
   const [error, setError] = useState("");
 
   //? FUNCIONES
+  async function signInWithEmail(e) {
+    e.preventDefault();
+
+    try {
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: emailRef,
+        password: passwordRef,
+      });
+
+      if (error) setError("A ocurrido un error al iniciar sesión 😥: " + error);
+
+      setMessage("Autenticación correcta");
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   async function signUpAccount(e) {
     e.preventDefault();
 
@@ -32,11 +50,10 @@ export const AuthContextProvider = ({ children }) => {
         password: passwordRef,
       });
 
-      if (error) {
+      if (error)
         setError(
           "A ocurrido un error durante la creación de la cuenta 😥: " + error
         );
-      }
 
       setMessage("Revice su bandeja para futuras instrucciones");
       return data;
@@ -73,6 +90,27 @@ export const AuthContextProvider = ({ children }) => {
     }
   }
 
+  async function resetPassword(e) {
+    e.preventDefault();
+
+    try {
+      const { data, error } = await supabaseClient.auth.resetPasswordForEmail({
+        email: emailRef,
+      });
+
+      if (error)
+        setError(
+          "A ocurrido un error durante el restablecimiento de contraseña 😥: " +
+            error
+        );
+
+      setMessage("Revice su bandeja para futuras instrucciones");
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   useEffect(() => {
     //| con authListener sabremos todo lo que pase con la data del usuario que se quiera autenticar
     const { data: authListener } = supabaseClient.auth.onAuthStateChange(
@@ -101,9 +139,11 @@ export const AuthContextProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        signInWithEmail,
         signUpAccount,
         signInWithGoogle,
         signOut,
+        resetPassword,
         user,
         message,
         error,

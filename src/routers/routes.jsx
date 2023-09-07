@@ -5,6 +5,7 @@ import Home from "./../components/app/Home";
 import AboutUs from "./../components/app/colegio/SobreNosotros";
 import Login from "./../components/auth/Login";
 import Registro from "./../components/auth/Registro";
+import ResetPassword from "./../components/auth/ResetPassword";
 import Perfil from "./../components/app/perfil/Perfil";
 import Files from "../components/app/modulos/archivos/Archivos";
 import Eventos from "../components/app/modulos/Eventos";
@@ -23,6 +24,7 @@ export default function MyRoutes() {
       {/* AUTH */}
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<Registro />} />
+      <Route path="/restablecer-contraseña" element={<ResetPassword />} />
     </Routes>
   );
 }

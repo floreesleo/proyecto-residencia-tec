@@ -3,8 +3,14 @@ import { UserAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 export default function Login() {
-  const { signInWithGoogle, error, message, setEmailRef, setPasswordRef } =
-    UserAuth();
+  const {
+    signInWithEmail,
+    signInWithGoogle,
+    error,
+    message,
+    setEmailRef,
+    setPasswordRef,
+  } = UserAuth();
 
   return (
     <>
@@ -14,7 +20,7 @@ export default function Login() {
             <h2 className="text-center mb-4">Inicio de sesión</h2>
             {message && <Alert variant="success">{message}</Alert>}
             {error && <Alert variant="danger">{error}</Alert>}
-            <Form>
+            <Form onSubmit={signInWithEmail}>
               <Form.Group>
                 <Form.Label>Correo electronico</Form.Label>
                 <Form.Control
@@ -48,7 +54,9 @@ export default function Login() {
             </Form.Group>
           </Card.Body>
         </Card>
-        <Button variant="link">Olvidaste tu contraseña?</Button>
+        <Button variant="link" as={Link} to="/restablecer-contraseña">
+          ¿Olvidaste tu contraseña?
+        </Button>
         <Button variant="link" as={Link} to="/registro">
           ¿No tienes una cuenta?
         </Button>
