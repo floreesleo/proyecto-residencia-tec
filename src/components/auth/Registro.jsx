@@ -17,12 +17,15 @@ export default function Registro() {
   } = UserAuth();
 
   const [eye, setEye] = useState("password");
+  const [eyeIcon, setEyeIcon] = useState(faEyeSlash);
 
   const cambiarOjo = () => {
     if (eye == "password") {
       setEye("text");
+      setEyeIcon(faEye);
     } else {
       setEye("password");
+      setEyeIcon(faEyeSlash);
     }
   };
 
@@ -50,7 +53,7 @@ export default function Registro() {
                   placeholder="****************"
                   onChange={(ev) => setPasswordRef(ev.target.value)}
                 />
-                <FontAwesomeIcon icon={faEyeSlash} onClick={cambiarOjo} />
+                <FontAwesomeIcon icon={eyeIcon} onClick={cambiarOjo} />
               </Form.Group>
               <Form.Group>
                 <Button type="submit" className="mt-2" variant="primary">
