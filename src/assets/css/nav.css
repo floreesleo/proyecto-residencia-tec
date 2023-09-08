@@ -1,0 +1,21 @@
+.navegador {
+    background-color: #1e3799 ;
+}
+
+.titulo {
+    color: #000 !important;
+}
+
+.texto {
+    color: #fff !important;
+}
+
+.titulo:hover {
+    color: #fff !important;
+    transition: ease-in 0.2s;
+}
+
+.texto:hover {
+    color: #000 !important;
+    transition: ease-in 0.2s;
+}
