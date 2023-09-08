@@ -22,18 +22,10 @@ export default function NavBar() {
             <Nav.Link as={Link} to="/archivos">
               Documentos
             </Nav.Link>
-            <Nav.Link as={Link} to="/eventos">
-              Eventos
-            </Nav.Link>
             <Nav.Link as={Link} to="/perfil">
               Perfil
             </Nav.Link>
           </Nav>
-        </Navbar.Collapse>
-        <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            Signed in as: <Link to="/perfil">Usuario</Link>
-          </Navbar.Text>
         </Navbar.Collapse>
       </Container>
     </Navbar>
