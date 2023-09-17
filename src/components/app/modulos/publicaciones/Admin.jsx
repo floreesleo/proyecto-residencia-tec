@@ -1,5 +1,5 @@
 import NavBar from "./../../Nav";
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 
 export default function Admin() {
   return (
@@ -7,6 +7,7 @@ export default function Admin() {
       <NavBar />
       <Container>
         <h1>Administrador de publicaciones</h1>
+        <Button variant="success">Crear publicación</Button>
       </Container>
     </>
   );
