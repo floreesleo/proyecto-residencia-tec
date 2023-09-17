@@ -5,7 +5,11 @@ import { faAustralSign } from "@fortawesome/free-solid-svg-icons";
 
 import "./../../assets/css/nav.css";
 
+import { UserAuth } from "./../../context/AuthContext";
+
 export default function NavBar() {
+  const { admin } = UserAuth();
+
   return (
     <Navbar expand="lg" className="navegador">
       <Container>
@@ -18,6 +22,18 @@ export default function NavBar() {
             <Nav.Link as={Link} to="/" className="texto">
               Inicio
             </Nav.Link>
+            {admin == true ? (
+              <Nav.Link
+                as={Link}
+                to="/administrador"
+                style={{ color: "yellow" }}
+              >
+                Publicaciones
+              </Nav.Link>
+            ) : (
+              <></>
+            )}
+
             <Nav.Link as={Link} to="/nosotros" className="texto">
               Nosotros
             </Nav.Link>

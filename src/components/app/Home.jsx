@@ -1,6 +1,6 @@
 import NavBar from "./Nav";
 import { Container } from "react-bootstrap";
-import Noticias from "./modulos/Publicaciones";
+import Publicaciones from "./modulos/publicaciones/Publicaciones";
 import Carrusel from "./Carrusel";
 
 import "./../../assets/css/home.css";
@@ -13,8 +13,7 @@ export default function Home() {
         <h2>Inicio</h2>
         <hr />
         <Carrusel />
-        <h4>Publicaciones</h4>
-        <Noticias />
+        <Publicaciones />
       </Container>
     </>
   );

@@ -7,6 +7,7 @@ const AuthContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState([]);
+  const [admin, setAdmin] = useState();
 
   const sessionSupabase = useSession();
   const supabaseClient = useSupabaseClient();
@@ -33,6 +34,12 @@ export const AuthContextProvider = ({ children }) => {
       });
 
       if (error) setError("A ocurrido un error al iniciar sesión 😥: " + error);
+
+      if (emailRef == "admin@colegio.com" && passwordRef == "administrador") {
+        setAdmin(true);
+      } else {
+        setAdmin(false);
+      }
 
       setMessage("Autenticación correcta");
       return data;
@@ -150,6 +157,7 @@ export const AuthContextProvider = ({ children }) => {
         sessionSupabase,
         setEmailRef,
         setPasswordRef,
+        admin,
       }}
     >
       {children}
