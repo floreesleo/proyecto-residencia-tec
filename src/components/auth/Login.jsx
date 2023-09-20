@@ -14,7 +14,7 @@ export default function Login() {
 
   return (
     <>
-      <Container className="mt-2">
+      <Container className="mt-5">
         <Card>
           <Card.Body>
             <h2 className="text-center mb-4">Inicio de sesión</h2>
