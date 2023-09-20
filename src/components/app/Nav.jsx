@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAustralSign } from "@fortawesome/free-solid-svg-icons";
@@ -22,27 +22,38 @@ export default function NavBar() {
             <Nav.Link as={Link} to="/" className="texto">
               Inicio
             </Nav.Link>
-            {admin == true ? (
-              <Nav.Link
-                as={Link}
-                to="/administrador"
-                style={{ color: "yellow" }}
-              >
-                Publicaciones
-              </Nav.Link>
-            ) : (
-              <></>
-            )}
 
             <Nav.Link as={Link} to="/nosotros" className="texto">
               Nosotros
             </Nav.Link>
-            <Nav.Link as={Link} to="/archivos" className="texto">
+            <Nav.Link as={Link} to="/sesion" className="texto">
               Documentos
             </Nav.Link>
-            <Nav.Link as={Link} to="/perfil" className="texto">
-              Perfil
-            </Nav.Link>
+            {admin == true ? (
+              <>
+                <NavDropdown
+                  title="Administrador"
+                  id="basic-nav-dropdown"
+                  style={{ color: "#fff" }}
+                >
+                  <NavDropdown.Item as={Link} to="/admin-publicaciones">
+                    Publicar
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/registro">
+                    Registrar usuario
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Something
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">
+                    Separated link
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </>
+            ) : (
+              <></>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

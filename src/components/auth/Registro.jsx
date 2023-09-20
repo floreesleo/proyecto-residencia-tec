@@ -9,7 +9,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 export default function Registro() {
   const {
     signUpAccount,
-    signInWithGoogle,
+    // signInWithGoogle,
     message,
     error,
     setEmailRef,
@@ -61,7 +61,7 @@ export default function Registro() {
                 </Button>
               </Form.Group>
             </Form>
-            <Form.Group>
+            {/* <Form.Group>
               <Button
                 onClick={signInWithGoogle}
                 className="mt-2"
@@ -69,12 +69,12 @@ export default function Registro() {
               >
                 Iniciar sesión con Google
               </Button>
-            </Form.Group>
+            </Form.Group> */}
           </Card.Body>
         </Card>
 
-        <Button variant="link" as={Link} to="/login">
-          ¿Ya tienes una cuenta?
+        <Button variant="link" as={Link} to="/">
+          Regresar
         </Button>
       </Container>
     </>

@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 
 const AuthContext = createContext();
@@ -17,7 +17,7 @@ export const AuthContextProvider = ({ children }) => {
   const [passwordRef, setPasswordRef] = useState("");
 
   //? Navegador
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   //? Alertas
   const [message, setMessage] = useState("");
@@ -128,13 +128,13 @@ export const AuthContextProvider = ({ children }) => {
         console.log("Sesión de supabase: ", session);
         console.log("Evento de supabase ", event);
 
-        if (session == null) {
-          navigate("/login");
-        } else {
-          setUser(session?.user.user_metadata);
-          console.log("Data del usuario: ", session?.user.user_metadata);
-          navigate("/");
-        }
+        // if (session == null) {
+        //   navigate("/login");
+        // } else {
+        //   setUser(session?.user.user_metadata);
+        //   console.log("Data del usuario: ", session?.user.user_metadata);
+        //   navigate("/");
+        // }
       }
     );
     return () => {
@@ -158,6 +158,7 @@ export const AuthContextProvider = ({ children }) => {
         setEmailRef,
         setPasswordRef,
         admin,
+        setUser,
       }}
     >
       {children}

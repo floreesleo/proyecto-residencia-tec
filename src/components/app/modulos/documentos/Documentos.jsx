@@ -5,13 +5,18 @@ import { Container, Button, Modal, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileArrowUp } from "@fortawesome/free-solid-svg-icons";
 
+import { Link } from "react-router-dom";
+
 export default function Documentos() {
   const [showFile, setShowFile] = useState(false);
 
   return (
     <>
       <NavBar />
-      <Container>
+      <Container className="mt-2">
+        <Button variant="success" as={Link} to="/perfil">
+          Ver perfil
+        </Button>
         <h2>Gestor de documentos</h2>
         <Button
           variant="outline-success"

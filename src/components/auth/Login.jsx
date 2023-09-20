@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Login() {
   const {
     signInWithEmail,
-    signInWithGoogle,
+    // signInWithGoogle,
     error,
     message,
     setEmailRef,
@@ -43,7 +43,7 @@ export default function Login() {
                 </Button>
               </Form.Group>
             </Form>
-            <Form.Group>
+            {/* <Form.Group>
               <Button
                 onClick={() => signInWithGoogle()}
                 className="mt-2"
@@ -51,14 +51,14 @@ export default function Login() {
               >
                 Iniciar sesión con Google
               </Button>
-            </Form.Group>
+            </Form.Group> */}
           </Card.Body>
         </Card>
         <Button variant="link" as={Link} to="/restablecer-contraseña">
           ¿Olvidaste tu contraseña?
         </Button>
-        <Button variant="link" as={Link} to="/registro">
-          ¿No tienes una cuenta?
+        <Button variant="link" as={Link} to="/">
+          Regresar
         </Button>
       </Container>
     </>
