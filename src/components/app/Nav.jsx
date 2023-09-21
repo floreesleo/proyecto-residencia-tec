@@ -36,14 +36,11 @@ export default function NavBar() {
                   id="basic-nav-dropdown"
                   style={{ color: "#fff" }}
                 >
-                  <NavDropdown.Item as={Link} to="/admin-publicaciones">
+                  <NavDropdown.Item as={Link} to="/add-publicacion">
                     Publicar
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/registro">
-                    Registrar usuario
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
+                  <NavDropdown.Item as={Link} to="/registrar-agremiado">
+                    Registrar agremiado
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">

@@ -1,25 +1,16 @@
+// React
 import { useState } from "react";
+
+// Bootstrap
 import { Button, Modal, Form } from "react-bootstrap";
 
+// Libreria e Icono de FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileArrowUp } from "@fortawesome/free-solid-svg-icons";
-
-import { supabase } from "./../../../../supabase/client";
-import { useSession } from "@supabase/auth-helpers-react";
 
 export default function AddButtonFile() {
   const [showFile, setShowFile] = useState(false);
   const [nombreDoc, setNombreDoc] = useState("");
-
-  const sessionSupabase = useSession();
-
-  async function uploadDoc(e) {
-    let file = e.target.files[0];
-
-    const { data, error } = supabase.storage
-      .from("documentos")
-      .upload(sessionSupabase.user.id + "/" + nombreDoc, file);
-  }
 
   return (
     <>
@@ -47,11 +38,7 @@ export default function AddButtonFile() {
           <Form>
             <Form.Group controlId="formFile" className="mb-3">
               <Form.Label>Seleccionar archivo</Form.Label>
-              <Form.Control
-                type="file"
-                accept="image/png, image/jpeg, .jpg, .doc, .docx, pdf, .xlsx, "
-                onChange={(e) => uploadDoc(e)}
-              />
+              <Form.Control type="file" />
             </Form.Group>
             <Form.Group>
               <Form.Label>Nombre del documento</Form.Label>

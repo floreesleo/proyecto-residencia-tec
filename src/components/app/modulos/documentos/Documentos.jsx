@@ -14,10 +14,12 @@ export default function Documentos() {
     <>
       <NavBar />
       <Container className="mt-2">
-        <Button variant="success" as={Link} to="/perfil">
-          Ver perfil
+        <Button variant="outline-success" as={Link} to="/perfil" size="sm">
+          Perfil
         </Button>
-        <h2>Gestor de documentos</h2>
+        <h1>Gestor de documentos</h1>
+
+        {/* Modal para subir documento */}
         <Button
           variant="outline-success"
           size="sm"
@@ -25,10 +27,10 @@ export default function Documentos() {
         >
           <FontAwesomeIcon icon={faFileArrowUp} />
         </Button>
+        <hr />
         <Form.Group className="mb-3" controlId="formFile">
           <Form.Control type="file" />
         </Form.Group>
-        <hr />
         <h3>Tus documentos</h3>
       </Container>
 

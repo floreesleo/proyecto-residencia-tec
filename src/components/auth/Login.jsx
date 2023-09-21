@@ -1,20 +1,24 @@
+// React
 import { useState } from "react";
+
+// Bootstrap
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
+
+// AuthContext
 import { UserAuth } from "../../context/AuthContext";
+
+// react-router-dom
 import { Link } from "react-router-dom";
 
 export default function Login() {
-  const {
-    signInWithEmail,
-    // signInWithGoogle,
-    error,
-    message,
-    setEmailRef,
-    setPasswordRef,
-  } = UserAuth();
+  // AuthContext
+  const { signInWithEmail, error, message, setEmailRef, setPasswordRef } =
+    UserAuth();
 
+  // Variables para ver contraseña
   const [valorPassword, setValorPassword] = useState("password");
 
+  // Función para ver contraseña
   const verContraseña = () => {
     if (valorPassword == "password") {
       setValorPassword("text");
@@ -33,7 +37,10 @@ export default function Login() {
             </h1>
             {message && <Alert variant="success">{message}</Alert>}
             {error && <Alert variant="danger">{error}</Alert>}
+
+            {/* Formulario de Login */}
             <Form onSubmit={signInWithEmail}>
+              {/* Email */}
               <Form.Group>
                 <Form.Label
                   style={{
@@ -49,6 +56,8 @@ export default function Login() {
                   onChange={(ev) => setEmailRef(ev.target.value)}
                 />
               </Form.Group>
+
+              {/* Password */}
               <Form.Group>
                 <Form.Label
                   style={{
@@ -64,11 +73,14 @@ export default function Login() {
                   onChange={(ev) => setPasswordRef(ev.target.value)}
                 />
                 <Form.Check
+                  // Ckeckbox para ver contraseña
                   label="Ver contraseña"
                   onClick={verContraseña}
                   style={{ color: "#fff" }}
                 />
               </Form.Group>
+
+              {/* Botón Submit */}
               <Form.Group>
                 <Button
                   type="submit"
@@ -85,12 +97,19 @@ export default function Login() {
             </Form>
           </Card.Body>
         </Card>
+
+        {/* Contenedor de otros links */}
         <Container className="text-center">
-          <Button variant="link" as={Link} to="/restablecer-contraseña">
+          <Button
+            variant="link"
+            as={Link}
+            to="/restablecer-contraseña"
+            style={{ fontSize: "16px" }}
+          >
             ¿Olvidaste tu contraseña?
           </Button>
           <br />
-          <Button variant="link" as={Link} to="/">
+          <Button variant="link" as={Link} to="/" style={{ fontSize: "16px" }}>
             Regresar
           </Button>
         </Container>

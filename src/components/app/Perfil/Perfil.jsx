@@ -10,6 +10,7 @@ import NavBar from "./../Nav";
 import { useState } from "react";
 import { UserAuth } from "../../../context/AuthContext";
 import { useSession } from "@supabase/auth-helpers-react";
+import { Link } from "react-router-dom";
 
 export default function Perfil() {
   const { signOut } = UserAuth();
@@ -20,12 +21,15 @@ export default function Perfil() {
   return (
     <>
       <NavBar />
-      <Container className="justify-content-center">
-        <Card style={{ width: "18rem" }}>
+      <Container className="mt-2 ">
+        <Card>
           <Card.Img variant="top" src={sessionSupabase.user.picture} />
           <Card.Body>
-            <Card.Title>{sessionSupabase.user.name}</Card.Title>
-            <Card.Text>{sessionSupabase.user.email}</Card.Text>
+            <Card.Title>
+              <h2 style={{ fontWeight: "bold" }}>Correo electronico: </h2>
+              {sessionSupabase.user.email}
+            </Card.Title>
+            <Card.Text>{sessionSupabase.user.name}</Card.Text>
             <ButtonGroup aria-label="Basic example">
               <Button variant="primary" onClick={() => setShow(true)}>
                 Actualizar perfil
@@ -36,6 +40,9 @@ export default function Perfil() {
             </ButtonGroup>
           </Card.Body>
         </Card>
+        <Button variant="link" as={Link} to="/documentos">
+          Regresar
+        </Button>
       </Container>
       {/* MODAL */}
       <Modal

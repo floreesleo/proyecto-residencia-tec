@@ -1,20 +1,24 @@
-import { Form, Button, Card, Alert, Container } from "react-bootstrap";
-import { UserAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+// React
 import { useState } from "react";
 
-export default function Registro() {
-  const {
-    signUpAccount,
-    // signInWithGoogle,
-    message,
-    error,
-    setEmailRef,
-    setPasswordRef,
-  } = UserAuth();
+// Bootstrap
+import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 
+// react-router-dom
+import { Link } from "react-router-dom";
+
+// AuthContext
+import { UserAuth } from "../../../../context/AuthContext";
+
+export default function Registro() {
+  // AuthContext
+  const { signUpAccount, message, error, setEmailRef, setPasswordRef } =
+    UserAuth();
+
+  // Variables para ver la contraseña
   const [valorPassword, setValorPassword] = useState("password");
 
+  // Función para ver contraseña
   const verContraseña = () => {
     if (valorPassword == "password") {
       setValorPassword("text");
@@ -33,7 +37,10 @@ export default function Registro() {
             </h1>
             {message && <Alert variant="success">{message}</Alert>}
             {error && <Alert variant="danger">{error}</Alert>}
+
+            {/* Formulario de SignUp */}
             <Form onSubmit={signUpAccount}>
+              {/* Email */}
               <Form.Group>
                 <Form.Label
                   style={{
@@ -49,6 +56,8 @@ export default function Registro() {
                   onChange={(ev) => setEmailRef(ev.target.value)}
                 />
               </Form.Group>
+
+              {/* Password */}
               <Form.Group>
                 <Form.Label
                   style={{
@@ -64,11 +73,14 @@ export default function Registro() {
                   onChange={(ev) => setPasswordRef(ev.target.value)}
                 />
                 <Form.Check
+                  // Ckeckbox para ver contraseña
                   label="Ver contraseña"
                   onClick={verContraseña}
                   style={{ color: "#fff" }}
                 />
               </Form.Group>
+
+              {/* Botón Submit */}
               <Form.Group>
                 <Button
                   type="submit"
@@ -85,6 +97,8 @@ export default function Registro() {
             </Form>
           </Card.Body>
         </Card>
+
+        {/* Contenedor de otros links */}
         <Container className="text-center">
           <Button variant="link" as={Link} to="/">
             Regresar

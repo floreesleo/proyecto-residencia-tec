@@ -1,29 +1,29 @@
+// React
 import { createContext, useState, useContext, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+
+// Supabase-Helper
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 
 const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const AuthContextProvider = ({ children }) => {
+  // Variables
   const [user, setUser] = useState([]);
   const [admin, setAdmin] = useState();
-
-  const sessionSupabase = useSession();
-  const supabaseClient = useSupabaseClient();
-
-  //? Usuario
+  // Variables de usuario
   const [emailRef, setEmailRef] = useState("");
   const [passwordRef, setPasswordRef] = useState("");
 
-  //? Navegador
-  // const navigate = useNavigate();
+  // Variables de Supabase-Helpers
+  const sessionSupabase = useSession();
+  const supabaseClient = useSupabaseClient();
 
-  //? Alertas
+  // Alertas
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  //? FUNCIONES
+  //+ FUNCIONES
   async function signInWithEmail(e) {
     e.preventDefault();
 
@@ -93,11 +93,12 @@ export const AuthContextProvider = ({ children }) => {
   async function signOut() {
     const { error } = await supabaseClient.auth.signOut();
     if (error) {
-      setError("A ocurrido un error durante la autenticación: " + error);
+      setError("A ocurrido un error al cerrar sesión: " + error);
     }
   }
 
   async function resetPassword(e) {
+    //! Corregir - Hacer que funcione
     e.preventDefault();
 
     try {

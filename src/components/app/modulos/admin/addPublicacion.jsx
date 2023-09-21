@@ -1,7 +1,9 @@
-import NavBar from "./../../Nav";
+import NavBar from "../../Nav";
+
+// Bootstrap
 import { Container, Button } from "react-bootstrap";
 
-export default function Admin() {
+export default function CrearPublicacion() {
   return (
     <>
       <NavBar />

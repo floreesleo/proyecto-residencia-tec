@@ -1,8 +1,14 @@
+// Bootstrap
 import { Container, Card, Button, Form, Alert } from "react-bootstrap";
+
+// react-router-dom
 import { Link } from "react-router-dom";
+
+// AuthContext
 import { UserAuth } from "../../context/AuthContext";
 
 export default function ResetPassword() {
+  // AuthContext
   const { resetPassword, error, message, setEmailRef } = UserAuth();
 
   return (
@@ -15,7 +21,10 @@ export default function ResetPassword() {
             </h1>
             {message && <Alert variant="success">{message}</Alert>}
             {error && <Alert variant="danger">{error}</Alert>}
+
+            {/* Formulario de restablecer contraseña */}
             <Form onSubmit={resetPassword}>
+              {/* Email */}
               <Form.Group>
                 <Form.Label
                   style={{
@@ -31,6 +40,8 @@ export default function ResetPassword() {
                   onChange={(ev) => setEmailRef(ev.target.value)}
                 />
               </Form.Group>
+
+              {/* Botón Sumbit */}
               <Form.Group>
                 <Button type="submit" className="mt-2 w-100" variant="primary">
                   Restablecer contraseña
@@ -39,8 +50,15 @@ export default function ResetPassword() {
             </Form>
           </Card.Body>
         </Card>
+
+        {/* Contenedor de otros links */}
         <Container className="text-center">
-          <Button variant="link" as={Link} to="/login">
+          <Button
+            variant="link"
+            as={Link}
+            to="/login"
+            style={{ fontSize: "16px" }}
+          >
             Regresar
           </Button>
         </Container>

@@ -1,4 +1,6 @@
 import NavBar from "./../Nav";
+
+// Bootstrap
 import { Container, Card } from "react-bootstrap";
 
 export default function AboutUs() {
@@ -29,6 +31,8 @@ export default function AboutUs() {
             </Card.Text>
           </Card.Body>
         </Card>
+        <hr />
+        <h2>Siguenos en nuestras redes.</h2>
       </Container>
     </>
   );
