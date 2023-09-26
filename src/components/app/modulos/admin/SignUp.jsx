@@ -76,7 +76,7 @@ export default function Registro() {
                   // Ckeckbox para ver contraseña
                   label="Ver contraseña"
                   onClick={verContraseña}
-                  style={{ color: "#fff" }}
+                  style={{ color: "#fff", marginTop: "5px" }}
                 />
               </Form.Group>
 
