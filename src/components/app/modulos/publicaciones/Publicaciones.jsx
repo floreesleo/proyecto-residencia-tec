@@ -10,6 +10,8 @@ export default function Publicaciones() {
       <Container>
         <h1>Publicaciones</h1>
         <CardPublicaciones />
+        <CardPublicaciones />
+        <CardPublicaciones />
       </Container>
     </>
   );
