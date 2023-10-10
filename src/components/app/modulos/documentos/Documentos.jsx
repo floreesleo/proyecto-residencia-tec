@@ -46,6 +46,9 @@ export default function Documentos() {
   // constante del nombre del documento
   const [nombreDoc, setNombreDoc] = useState("");
 
+  // constante para habilitar o deshabilitar el input de file
+  const [disableFile, setDisableFile] = useState("");
+
   const docInputRef = useRef(null);
 
   useEffect(() => {
@@ -71,17 +74,25 @@ export default function Documentos() {
     }
   }
 
+  const nombreDocVacio = nombreDoc.trim() === "";
+
   async function uploadDoc(ev) {
-    let doc = ev.target.files[0];
-
-    const { data, error } = await supabaseClient.storage
-      .from("documentos")
-      .upload(user.id + "/" + nombreDoc, doc);
-
-    if (data) {
-      getDocs();
+    if (nombreDocVacio) {
+      setDisableFile("disabled");
     } else {
-      console.error(error);
+      let doc = ev.target.files[0];
+
+      const { data, error } = await supabaseClient.storage
+        .from("documentos")
+        .upload(user.id + "/" + nombreDoc, doc);
+
+      if (data) {
+        getDocs();
+      } else {
+        console.error(error);
+      }
+
+      setDisableFile("");
     }
   }
 
@@ -159,8 +170,8 @@ export default function Documentos() {
         </Modal.Header>
         <Modal.Body>
           <Alert key="secondary" variant="secondary">
-            Primero dar nombre al documento y luego seleccionar el documento a
-            subir.
+            Primero debe dar un nombre al documento y luego seleccionar el
+            documento a subir.
           </Alert>
           <Form>
             <Form.Group className="mb-2">
@@ -175,6 +186,7 @@ export default function Documentos() {
               <Form.Label>Seleccionar documento</Form.Label>
               <Form.Control
                 type="file"
+                onBeforeInput={disableFile}
                 accept="image/png, image/jpge, image/jpg, .doc, .docx, .txt, .pdf"
                 onChange={(ev) => uploadDoc(ev)}
                 ref={docInputRef}
