@@ -25,7 +25,7 @@ import { Link } from "react-router-dom";
 import {
   useSupabaseClient,
   useUser,
-  useSession,
+  // useSession,
 } from "@supabase/auth-helpers-react";
 
 // URL donde está almacenada la base de datos de storage, módulo donde se suben documentos
@@ -39,7 +39,7 @@ export default function Documentos() {
   // variables de supabase para trabajar con el usuario que inició sesión
   const user = useUser();
   const supabaseClient = useSupabaseClient();
-  const sessionSupabase = useSession();
+  // const sessionSupabase = useSession();
 
   const [documentos, setDocumentos] = useState([]);
 
@@ -112,8 +112,8 @@ export default function Documentos() {
     <>
       <NavBar />
       <Container className="mt-2">
-        <Button variant="outline-success" as={Link} to="/perfil" size="sm">
-          {sessionSupabase.user.email}
+        <Button variant="outline-dark" as={Link} to="/perfil" size="sm">
+          Ver perfil
         </Button>
         <h1>Gestor de documentos</h1>
 
@@ -140,6 +140,7 @@ export default function Documentos() {
                   className="btn btn-outline-dark text-truncate w-100"
                 >
                   <FontAwesomeIcon icon={faFile} className="mr-5" />
+
                   {CDNURL + user.id + "/" + documento.name}
                 </a>
                 {/* Boton para borrar la imagen */}

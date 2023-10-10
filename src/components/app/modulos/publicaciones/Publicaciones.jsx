@@ -1,5 +1,5 @@
 // Bootstrap
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 // Tarjeta de publicaciones
 import CardPublicaciones from "./CardPublicaciones";
@@ -9,9 +9,14 @@ export default function Publicaciones() {
     <>
       <Container>
         <h1>Publicaciones</h1>
-        <CardPublicaciones />
-        <CardPublicaciones />
-        <CardPublicaciones />
+        <Row xs={1} md={2} className="g-4 mt-2">
+          <CardPublicaciones />
+          <CardPublicaciones />
+          <CardPublicaciones />
+          <CardPublicaciones />
+          <CardPublicaciones />
+          <CardPublicaciones />
+        </Row>
       </Container>
     </>
   );

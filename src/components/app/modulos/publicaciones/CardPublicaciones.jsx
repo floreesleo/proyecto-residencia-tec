@@ -3,7 +3,7 @@ import { Container, Card, Button } from "react-bootstrap";
 export default function CardPublicaciones() {
   return (
     <Container className="text-center">
-      <Card style={{ width: "18rem" }}>
+      <Card style={{ width: "18rem" }} className="mb-3">
         <Card.Img variant="top" src="holder.js/100px180" />
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
