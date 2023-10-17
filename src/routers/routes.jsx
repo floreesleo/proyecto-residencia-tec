@@ -16,6 +16,7 @@ import Perfil from "./../components/app/perfil/Perfil";
 
 // Modulos
 import Documentos from "../components/app/modulos/documentos/Documentos";
+import Agremiados from "../components/app/modulos/agremiados/Agremiados";
 import Sesion from "../components/app/modulos/Sesion";
 
 // Administrador
@@ -33,6 +34,7 @@ export default function MyRoutes() {
       {/* MODULOS */}
       <Route path="/sesion" element={<Sesion />} />
       <Route path="/documentos" element={<Documentos />} />
+      <Route path="/agremiados" element={<Agremiados />} />
       {/* ADMINISTRADOR */}
       <Route path="/add-publicacion" element={<CrearPublicacion />} />
       <Route path="/registrar-agremiado" element={<Registro />} />

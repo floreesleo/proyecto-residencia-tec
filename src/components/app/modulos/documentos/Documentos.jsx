@@ -139,13 +139,16 @@ export default function Documentos() {
                   rel="noopener noreferrer"
                   className="btn btn-outline-dark text-truncate w-100"
                 >
-                  <FontAwesomeIcon icon={faFile} className="mr-5" />
-
-                  {CDNURL + user.id + "/" + documento.name}
+                  {/* Icono de archivo */}
+                  <FontAwesomeIcon
+                    icon={faFile}
+                    style={{ marginRight: "5px" }}
+                  />
+                  {documento.name}
                 </a>
                 {/* Boton para borrar la imagen */}
                 <Button
-                  variant="danger"
+                  variant="outline-danger w-100"
                   className="mt-1"
                   onClick={() => deleteDoc(documento.name)}
                 >
