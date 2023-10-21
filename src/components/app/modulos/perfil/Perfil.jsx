@@ -13,17 +13,17 @@ import {
 } from "react-bootstrap";
 
 // Navbar
-import NavBar from "./../Nav";
+import NavBar from "../../Nav";
 
 // react-router-dom
 import { Link } from "react-router-dom";
 
 //AuthContext
-import { UserAuth } from "../../../context/AuthContext";
+import { UserAuth } from "../../../../context/AuthContext";
 
 //Supabase
 import { useUser, useSession } from "@supabase/auth-helpers-react";
-import { supabase } from "./../../../supabase/client";
+import { supabase } from "../../../../supabase/client";
 
 export default function Perfil() {
   const { signOut } = UserAuth();

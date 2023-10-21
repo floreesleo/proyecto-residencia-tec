@@ -8,7 +8,7 @@ export default function CrearPublicacion() {
     <>
       <NavBar />
       <Container>
-        <h1>Administrador de publicaciones</h1>
+        <h1>Crear publicación de publicaciones</h1>
         <Button variant="success">Crear publicación</Button>
       </Container>
     </>

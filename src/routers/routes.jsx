@@ -12,7 +12,7 @@ import Login from "./../components/auth/Login";
 import ResetPassword from "./../components/auth/ResetPassword";
 
 // Perfil
-import Perfil from "./../components/app/perfil/Perfil";
+import Perfil from "./../components/app/modulos/perfil/Perfil";
 
 // Modulos
 import Documentos from "../components/app/modulos/documentos/Documentos";
@@ -20,8 +20,8 @@ import Agremiados from "../components/app/modulos/agremiados/Agremiados";
 import Sesion from "../components/app/modulos/Sesion";
 
 // Administrador
-import CrearPublicacion from "../components/app/modulos/admin/addPublicacion";
-import Registro from "../components/app/modulos/admin/SignUp";
+import CrearPublicacion from "../components/app/modulos/admin/crearPublicacion";
+import Registro from "../components/app/modulos/admin/registrarAgremiado";
 
 export default function MyRoutes() {
   return (

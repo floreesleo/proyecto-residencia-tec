@@ -3,6 +3,10 @@ import NavBar from "./../Nav";
 // Bootstrap
 import { Container, Card } from "react-bootstrap";
 
+// FontAwesomeIcon
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faFacebook } from "@fortawesome/free-solid-svg-icons";
+
 export default function AboutUs() {
   return (
     <>
@@ -33,6 +37,21 @@ export default function AboutUs() {
         </Card>
         <hr />
         <h2>Siguenos en nuestras redes.</h2>
+        <a
+          href="https://www.facebook.com/arquitectos.de.comitan"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Facebook
+        </a>
+        <br />
+        <a
+          href="https://www.instagram.com/arquitectosdecomitan_/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
       </Container>
     </>
   );

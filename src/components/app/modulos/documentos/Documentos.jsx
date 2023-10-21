@@ -146,13 +146,18 @@ export default function Documentos() {
                   />
                   {documento.name}
                 </a>
-                {/* Boton para borrar la imagen */}
+                {/* Boton para editar el nombre del documento */}
+                <Button variant="outline-primary w-100" className="mt-1">
+                  Editar nombre
+                </Button>
+
+                {/* Boton para borrar el documento */}
                 <Button
                   variant="outline-danger w-100"
                   className="mt-1"
                   onClick={() => deleteDoc(documento.name)}
                 >
-                  Borrar archivo
+                  Borrar documento
                 </Button>
               </Col>
             );

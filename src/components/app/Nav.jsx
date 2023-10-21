@@ -41,12 +41,12 @@ export default function NavBar() {
                   <NavDropdown.Item as={Link} to="/add-publicacion">
                     Publicar
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/registrar-agremiado">
-                    Registrar agremiado
+                  <NavDropdown.Item as={Link} to="/agremiados">
+                    Agremiados
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
+                  <NavDropdown.Item as={Link} to="/registrar-agremiado">
+                    Registrar agremiado
                   </NavDropdown.Item>
                 </NavDropdown>
               </>
