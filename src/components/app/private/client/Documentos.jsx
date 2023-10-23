@@ -1,7 +1,7 @@
 // React
 import { useEffect, useState, useRef } from "react";
 
-import NavBar from "../../Nav";
+import NavBar from "../../shared/Nav";
 
 // Bootstrap
 import {

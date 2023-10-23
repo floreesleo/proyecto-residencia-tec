@@ -2,7 +2,7 @@
 import { Container, Row } from "react-bootstrap";
 
 // Tarjeta de publicaciones
-import CardPublicaciones from "./CardPublicaciones";
+import CardPublicaciones from "../../private/admin/templates/CardPublicaciones";
 
 export default function Publicaciones() {
   return (

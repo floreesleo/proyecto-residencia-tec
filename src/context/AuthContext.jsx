@@ -4,6 +4,8 @@ import { createContext, useState, useContext, useEffect } from "react";
 // Supabase-Helper
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 
+import { useNavigate } from "react-router-dom";
+
 const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
@@ -11,6 +13,7 @@ export const AuthContextProvider = ({ children }) => {
   // Variables
   const [user, setUser] = useState([]);
   const [admin, setAdmin] = useState();
+
   // Variables de usuario
   const [emailRef, setEmailRef] = useState("");
   const [passwordRef, setPasswordRef] = useState("");
@@ -22,6 +25,9 @@ export const AuthContextProvider = ({ children }) => {
   // Alertas
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+
+  //? Navegador
+  const navigate = useNavigate();
 
   //+ FUNCIONES
   async function signInWithEmail(e) {
@@ -37,6 +43,7 @@ export const AuthContextProvider = ({ children }) => {
 
       if (emailRef == "admin@colegio.com" && passwordRef == "administrador") {
         setAdmin(true);
+        navigate("/administrador");
       } else {
         setAdmin(false);
       }
@@ -95,6 +102,7 @@ export const AuthContextProvider = ({ children }) => {
     if (error) {
       setError("A ocurrido un error al cerrar sesión: " + error);
     }
+    setAdmin(false);
   }
 
   async function resetPassword(e) {

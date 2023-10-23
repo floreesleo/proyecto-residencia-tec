@@ -13,7 +13,7 @@ import {
 } from "react-bootstrap";
 
 // Navbar
-import NavBar from "../../Nav";
+import NavBar from "../../shared/Nav";
 
 // react-router-dom
 import { Link } from "react-router-dom";

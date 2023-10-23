@@ -2,9 +2,9 @@
 import { Carousel, Figure } from "react-bootstrap";
 
 // Imagenes de prueba
-import example1 from "./../../assets/img/example-1.jpg";
-import example2 from "./../../assets/img/example-2.jpg";
-import example3 from "./../../assets/img/example-3.jpg";
+import example1 from "./../../../assets/img/example-1.jpg";
+import example2 from "./../../../assets/img/example-2.jpg";
+import example3 from "./../../../assets/img/example-3.jpg";
 
 export default function Carrusel() {
   return (

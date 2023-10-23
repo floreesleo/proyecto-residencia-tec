@@ -1,4 +1,4 @@
-import NavBar from "./../Nav";
+import NavBar from "./../shared/Nav";
 
 // Bootstrap
 import { Container, Card } from "react-bootstrap";

@@ -8,7 +8,9 @@ import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // AuthContext
-import { UserAuth } from "../../../../context/AuthContext";
+import { UserAuth } from "../../../../../context/AuthContext";
+
+import NavBar from "../../../shared/Nav";
 
 export default function Registro() {
   // AuthContext
@@ -29,12 +31,11 @@ export default function Registro() {
 
   return (
     <>
+      <NavBar />
       <Container className="mt-5">
-        <Card style={{ background: "#002161" }}>
+        <Card>
           <Card.Body>
-            <h1 className="text-center mb-4" style={{ color: "#fff" }}>
-              Registrar agremiado
-            </h1>
+            <h1 className="text-center mb-4">Registrar agremiado</h1>
             {message && <Alert variant="success">{message}</Alert>}
             {error && <Alert variant="danger">{error}</Alert>}
 
@@ -42,14 +43,7 @@ export default function Registro() {
             <Form onSubmit={signUpAccount}>
               {/* Email */}
               <Form.Group>
-                <Form.Label
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
-                  Correo electronico
-                </Form.Label>
+                <Form.Label>Correo electronico</Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="example@example.com"
@@ -59,14 +53,7 @@ export default function Registro() {
 
               {/* Password */}
               <Form.Group>
-                <Form.Label
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
-                  Contraseña
-                </Form.Label>
+                <Form.Label>Contraseña</Form.Label>
                 <Form.Control
                   type={valorPassword}
                   placeholder="****************"
@@ -76,21 +63,12 @@ export default function Registro() {
                   // Ckeckbox para ver contraseña
                   label="Ver contraseña"
                   onClick={verContraseña}
-                  style={{ color: "#fff", marginTop: "5px" }}
                 />
               </Form.Group>
 
               {/* Botón Submit */}
               <Form.Group>
-                <Button
-                  type="submit"
-                  className="mt-2 w-100"
-                  variant="primary"
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
+                <Button type="submit" className="mt-2 w-100" variant="primary">
                   Registrar agremiado
                 </Button>
               </Form.Group>
@@ -100,9 +78,9 @@ export default function Registro() {
 
         <br />
 
-        <Card style={{ background: "#002161" }}>
+        <Card>
           <Card.Body>
-            <h1 className="text-center mb-4" style={{ color: "#fff" }}>
+            <h1 className="text-center mb-4">
               Agregar agremiado a la aplicación
             </h1>
             {message && <Alert variant="success">{message}</Alert>}
@@ -112,12 +90,7 @@ export default function Registro() {
             <Form>
               {/* Nombre del agremiado */}
               <Form.Group>
-                <Form.Label
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
+                <Form.Label>
                   Nombre completo del agremiado del agremiado
                 </Form.Label>
                 <Form.Control
@@ -128,27 +101,13 @@ export default function Registro() {
 
               {/* Puesto */}
               <Form.Group>
-                <Form.Label
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
-                  Puesto
-                </Form.Label>
+                <Form.Label>Puesto</Form.Label>
                 <Form.Control type="text" placeholder="Presidente" />
               </Form.Group>
 
               {/* Dirección */}
               <Form.Group>
-                <Form.Label
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
-                  Dirección
-                </Form.Label>
+                <Form.Label>Dirección</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Primera C. Sur Pte. 35, Guadalupe, 30020 Comitán de Domínguez, Chis."
@@ -157,60 +116,29 @@ export default function Registro() {
 
               <hr />
 
-              <h5 className="mb-4" style={{ color: "#fff" }}>
-                Redes sociales
-              </h5>
+              <h5 className="mb-4">Redes sociales</h5>
 
               {/* Facebook */}
               <Form.Group>
-                <Form.Label
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
-                  Facebook
-                </Form.Label>
+                <Form.Label>Facebook</Form.Label>
                 <Form.Control type="text" placeholder="URL del Facebook" />
               </Form.Group>
 
               {/* Instagram */}
               <Form.Group>
-                <Form.Label
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
-                  Instagram
-                </Form.Label>
+                <Form.Label>Instagram</Form.Label>
                 <Form.Control type="text" placeholder="URL de Instagram" />
               </Form.Group>
 
               {/* Twitter */}
               <Form.Group>
-                <Form.Label
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
-                  Twitter
-                </Form.Label>
+                <Form.Label>Twitter</Form.Label>
                 <Form.Control type="text" placeholder="URL de Twitter" />
               </Form.Group>
 
               {/* Botón Submit */}
               <Form.Group>
-                <Button
-                  type="submit"
-                  className="mt-2 w-100"
-                  variant="primary"
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
+                <Button type="submit" className="mt-2 w-100" variant="primary">
                   Agregar datos del agremiado
                 </Button>
               </Form.Group>

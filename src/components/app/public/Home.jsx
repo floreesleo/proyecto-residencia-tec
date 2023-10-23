@@ -1,16 +1,16 @@
-import NavBar from "./Nav";
+import NavBar from "./../shared/Nav";
 
 // Bootstrap
 import { Container } from "react-bootstrap";
 
 // Componente para ver publicaciones
-import Publicaciones from "./modulos/publicaciones/Publicaciones";
+import Publicaciones from "../public/interfaces/Publicaciones";
 
 // Carrusel
 import Carrusel from "./Carrusel";
 
 // Estilos CSS de Home
-import "./../../assets/css/home.css";
+import "./../../../assets/css/home.css";
 
 export default function Home() {
   return (
