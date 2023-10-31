@@ -14,7 +14,8 @@ export default function NavBar() {
     <Navbar expand="lg" className="navegador">
       <Container>
         <Navbar.Brand as={Link} to="/" className="titulo">
-          <FontAwesomeIcon icon={faAustralSign} /> Colegio de arquitectos
+          <FontAwesomeIcon icon={faAustralSign} /> Colegio de arquitectos de
+          Comitán
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
