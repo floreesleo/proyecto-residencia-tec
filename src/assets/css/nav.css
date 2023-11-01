@@ -1,21 +1,21 @@
 .navegador {
-    background-color: #002161 ;
+    background-color: #f5f6fa ;
 }
 
-.titulo {
+/* .titulo {
     color: #fff !important;
-}
+} */
 
 .texto {
-    color: #fff !important;
-}
+    color: #000 !important;
+} 
 
-.titulo:hover {
+/* .titulo:hover {
     color: #000 !important;
     transition: ease-in 0.2s;
-}
+} */
 
-.texto:hover {
+/* .texto:hover {
     color: #000 !important;
     transition: ease-in 0.2s;
-}
+}  */

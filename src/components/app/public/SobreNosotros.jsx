@@ -6,10 +6,10 @@ import { Container, Card } from "react-bootstrap";
 // Fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEnvelope,
-  faUsers,
-  faPhone,
   faLocationDot,
+  faAddressBook,
+  faBullseye,
+  faPenNib,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function AboutUs() {
@@ -20,8 +20,10 @@ export default function AboutUs() {
         <h2>Sobre nosotros</h2>
         <Card>
           <Card.Body>
-            <Card.Title>Nuestra misión</Card.Title>
-            <Card.Text>
+            <Card.Title>
+              Nuestra misión <FontAwesomeIcon icon={faPenNib} />
+            </Card.Title>
+            <Card.Text style={{ textAlign: "justify" }}>
               Nuestra misión es integrar un grupo unido; con profesionales de la
               Arquitectura, comprometidos con nuestra profesión; preocupados por
               nuestros colegas y todas aquellas instituciones o personas que
@@ -32,8 +34,10 @@ export default function AboutUs() {
         <br />
         <Card>
           <Card.Body>
-            <Card.Title>Nuestro objetivo</Card.Title>
-            <Card.Text>
+            <Card.Title>
+              Nuestro objetivo <FontAwesomeIcon icon={faBullseye} />
+            </Card.Title>
+            <Card.Text style={{ textAlign: "justify" }}>
               Nuestro objetivo es velar por la ética, formación y ordenación del
               libre ejercicio de la profesión de arquitecto, representar sus
               intereses y difundir sus proyectos, en los más modernos campos de
@@ -50,19 +54,17 @@ export default function AboutUs() {
         <br />
         <Card className="mb-5">
           <Card.Body>
-            <Card.Title>Contactanos</Card.Title>
-            <Card.Subtitle className="mb-2">
-              Teléfono <FontAwesomeIcon icon={faPhone} />
-            </Card.Subtitle>
+            <Card.Title>
+              Contactanos <FontAwesomeIcon icon={faAddressBook} />
+            </Card.Title>
+            <Card.Subtitle className="mb-2">Teléfono</Card.Subtitle>
             <Card.Text className="text-muted">+52 (963) 632 6561</Card.Text>
-            <Card.Subtitle className="mb-2">
-              Correo electronico <FontAwesomeIcon icon={faEnvelope} />
-            </Card.Subtitle>
+            <Card.Subtitle className="mb-2">Correo electronico</Card.Subtitle>
             <Card.Text className="text-muted">
               arquitectosdecomitan@outlook.es
             </Card.Text>
             <Card.Subtitle className="mb-2">
-              Nuestras redes <FontAwesomeIcon icon={faUsers} />
+              Nuestras redes sociales
             </Card.Subtitle>
             <Card.Text>
               <a

@@ -8,9 +8,6 @@ export default function CardPublicaciones() {
       <Card style={{ width: "18rem" }} className="mb-3">
         <Card.Body>
           <Card.Title>Titulo de publicación</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">
-            Subtitulo de la publicación
-          </Card.Subtitle>
           <Card.Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
             fermentum placerat consectetur. Etiam vel neque tempor, sollicitudin
@@ -18,8 +15,8 @@ export default function CardPublicaciones() {
             a, sodales justo.
           </Card.Text>
           <Card.Img variant="top" src={example1} />
-          <Button variant="outline-dark" className="mt-2">
-            Ir a algún lado
+          <Button variant="outline-primary" className="mt-2">
+            Ver publicación en Facebook
           </Button>
         </Card.Body>
       </Card>

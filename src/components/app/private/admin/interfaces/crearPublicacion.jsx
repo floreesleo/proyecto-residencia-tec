@@ -1,39 +1,58 @@
 // React
 import { useState } from "react";
 
-import NavBar from "../../../shared/Nav";
-
 // Bootstrap
-import { Container, Button, Form, Card } from "react-bootstrap";
+import { Container, Button, Form, Card, Alert } from "react-bootstrap";
+
+// react-router-dom
+import { Link } from "react-router-dom";
 
 import { supabase } from "../../../../../supabase/client";
 
 export default function CrearPublicacion() {
   const [titulo, setTitulo] = useState("");
-  const [subtitulo, setSubtitulo] = useState("");
   const [contenido, setContenido] = useState("");
   const [link, setLink] = useState("");
+
+  // Alertas y mensajes
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const result = await supabase.from("publicaciones").insert({
         titulo: titulo,
-        subtitulo: subtitulo,
         contenido: contenido,
         link: link,
       });
 
       console.log(result);
+
+      // Mensaje de exito
+      setMessage("¡Publicación creada con exito!");
+
+      // Limpia los inputs del formulario
+      setTitulo("");
+      setContenido("");
+      setLink("");
     } catch (error) {
       console.error(error);
+      setError("Hubo un error al crear la publicación");
     }
   };
 
   return (
     <>
-      <NavBar />
-      <Container>
+      <Container className="mt-3">
+        <Button
+          variant="outline-primary"
+          as={Link}
+          to="/administrador"
+          style={{ fontSize: "16px" }}
+        >
+          Regresar
+        </Button>
         <Card className="mt-3">
           <Card.Body>
             <h1 className="text-center mb-4">Crear publicación</h1>
@@ -45,23 +64,13 @@ export default function CrearPublicacion() {
                 <Form.Label>Titulo de la publicación</Form.Label>
                 <Form.Control
                   type="text"
+                  required
                   placeholder="Titulo"
                   onChange={(ev) => setTitulo(ev.target.value)}
                 />
               </Form.Group>
 
-              {/* Subtitulo */}
-              <Form.Group className="mt-2">
-                <Form.Label>Subtitulo de la publicación</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Subtitulo"
-                  onChange={(ev) => setSubtitulo(ev.target.value)}
-                />
-              </Form.Group>
-
               {/* Contenido */}
-
               <Form.Group
                 className="mt-2"
                 controlId="exampleForm.ControlTextarea1"
@@ -69,6 +78,7 @@ export default function CrearPublicacion() {
                 <Form.Label>Contenido</Form.Label>
                 <Form.Control
                   as="textarea"
+                  required
                   rows={5}
                   placeholder="Contenido del articulo"
                   onChange={(ev) => setContenido(ev.target.value)}
@@ -106,6 +116,12 @@ export default function CrearPublicacion() {
                 </Button>
               </Form.Group>
             </Form>
+            {message && (
+              <Alert variant="success" className="mt-3">
+                {message}
+              </Alert>
+            )}
+            {error && <Alert variant="danger">{error}</Alert>}
           </Card.Body>
         </Card>
       </Container>

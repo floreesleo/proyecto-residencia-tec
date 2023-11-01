@@ -1,5 +1,3 @@
-import NavBar from "./../../shared/Nav";
-
 // Bootstrap
 import { Container, Button } from "react-bootstrap";
 
@@ -9,11 +7,10 @@ import { Link } from "react-router-dom";
 export default function Administrador() {
   return (
     <>
-      <NavBar />
-      <Container className="text-center">
-        <h1>Administrador</h1>
+      <Container className="text-center mt-3">
+        <h1>Administrador | Colegio de arquitectos de Comitán</h1>
         <Button
-          variant="link"
+          variant="outline-primary"
           as={Link}
           to="/crear-publicacion"
           style={{ fontSize: "16px" }}
@@ -22,15 +19,16 @@ export default function Administrador() {
         </Button>
         <br />
         <Button
-          variant="link"
+          variant="outline-success"
           as={Link}
           to="/registrar-agremiado"
+          className="mt-2"
           style={{ fontSize: "16px" }}
         >
-          Registrar nuevo agremiado
+          Registrar agremiado
         </Button>
         <hr />
-        <Button variant="danger" as={Link} to="/perfil">
+        <Button variant="outline-danger" as={Link} to="/perfil">
           Perfil
         </Button>
       </Container>

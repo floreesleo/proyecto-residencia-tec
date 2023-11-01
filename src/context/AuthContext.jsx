@@ -103,6 +103,7 @@ export const AuthContextProvider = ({ children }) => {
       setError("A ocurrido un error al cerrar sesión: " + error);
     }
     setAdmin(false);
+    navigate("/");
   }
 
   async function resetPassword(e) {
