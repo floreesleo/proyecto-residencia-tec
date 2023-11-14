@@ -10,8 +10,6 @@ import { Link } from "react-router-dom";
 // AuthContext
 import { UserAuth } from "../../../../../context/AuthContext";
 
-import NavBar from "../../../shared/Nav";
-
 export default function Registro() {
   // AuthContext
   const { signUpAccount, message, error, setEmailRef, setPasswordRef } =
@@ -31,9 +29,17 @@ export default function Registro() {
 
   return (
     <>
-      <NavBar />
-      <Container className="mt-5">
-        <Card>
+      <Container className="mt-3">
+        <Button
+          variant="outline-primary"
+          as={Link}
+          to="/administrador"
+          className="w-100"
+          style={{ fontSize: "16px" }}
+        >
+          Regresar
+        </Button>
+        <Card className="mt-3">
           <Card.Body>
             <h1 className="text-center mb-4">Registrar agremiado</h1>
             {message && <Alert variant="success">{message}</Alert>}
@@ -78,7 +84,7 @@ export default function Registro() {
 
         <br />
 
-        <Card>
+        <Card className="mb-3">
           <Card.Body>
             <h1 className="text-center mb-4">
               Agregar agremiado a la aplicación
@@ -96,21 +102,6 @@ export default function Registro() {
                 <Form.Control
                   type="text"
                   placeholder="Juan Carlos Torres Lopez"
-                />
-              </Form.Group>
-
-              {/* Puesto */}
-              <Form.Group>
-                <Form.Label>Puesto</Form.Label>
-                <Form.Control type="text" placeholder="Presidente" />
-              </Form.Group>
-
-              {/* Dirección */}
-              <Form.Group>
-                <Form.Label>Dirección</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Primera C. Sur Pte. 35, Guadalupe, 30020 Comitán de Domínguez, Chis."
                 />
               </Form.Group>
 
@@ -145,13 +136,6 @@ export default function Registro() {
             </Form>
           </Card.Body>
         </Card>
-
-        {/* Contenedor de otros links */}
-        <Container className="text-center">
-          <Button variant="link" as={Link} to="/">
-            Regresar
-          </Button>
-        </Container>
       </Container>
     </>
   );

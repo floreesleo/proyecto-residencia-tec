@@ -12,6 +12,7 @@ import {
   Row,
   Col,
   Alert,
+  Dropdown,
 } from "react-bootstrap";
 
 // Fontawesome
@@ -133,32 +134,34 @@ export default function Documentos() {
             return (
               // Obtiene como llave la url, el id del usuario y el nombde del documento
               <Col key={CDNURL + user.id + "/" + documento.name}>
-                <a
-                  href={CDNURL + user.id + "/" + documento.name}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline-dark text-truncate w-100"
-                >
-                  {/* Icono de archivo */}
-                  <FontAwesomeIcon
-                    icon={faFile}
-                    style={{ marginRight: "5px" }}
-                  />
-                  {documento.name}
-                </a>
-                {/* Boton para editar el nombre del documento */}
-                <Button variant="outline-primary w-100" className="mt-1">
-                  Editar nombre
-                </Button>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="outline-dark"
+                    id="dropdown-basic"
+                    className="text-truncate w-100"
+                  >
+                    {/* Icono de archivo */}
+                    <FontAwesomeIcon
+                      icon={faFile}
+                      style={{ marginRight: "5px" }}
+                    />
+                    {documento.name}
+                  </Dropdown.Toggle>
 
-                {/* Boton para borrar el documento */}
-                <Button
-                  variant="outline-danger w-100"
-                  className="mt-1"
-                  onClick={() => deleteDoc(documento.name)}
-                >
-                  Borrar documento
-                </Button>
+                  <Dropdown.Menu>
+                    <Dropdown.Item
+                      href={CDNURL + user.id + "/" + documento.name}
+                    >
+                      Descargar documento
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">
+                      Editar nombre
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => deleteDoc(documento.name)}>
+                      Borrar documento
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Col>
             );
           })}

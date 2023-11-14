@@ -7,39 +7,23 @@ import { Container, Button, Form, Card, Alert } from "react-bootstrap";
 // react-router-dom
 import { Link } from "react-router-dom";
 
-import { supabase } from "../../../../../supabase/client";
+import { useNews } from "./../../../../../context/NewsContext";
+
+import ListaPublicaciones from "./../templates/ListaPublicaciones";
 
 export default function CrearPublicacion() {
+  const { crearPublicacion, message, error } = useNews();
+
   const [titulo, setTitulo] = useState("");
   const [contenido, setContenido] = useState("");
   const [link, setLink] = useState("");
 
-  // Alertas y mensajes
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const result = await supabase.from("publicaciones").insert({
-        titulo: titulo,
-        contenido: contenido,
-        link: link,
-      });
-
-      console.log(result);
-
-      // Mensaje de exito
-      setMessage("¡Publicación creada con exito!");
-
-      // Limpia los inputs del formulario
-      setTitulo("");
-      setContenido("");
-      setLink("");
-    } catch (error) {
-      console.error(error);
-      setError("Hubo un error al crear la publicación");
-    }
+    crearPublicacion(titulo, contenido, link);
+    setTitulo("");
+    setContenido("");
+    setLink("");
   };
 
   return (
@@ -49,6 +33,7 @@ export default function CrearPublicacion() {
           variant="outline-primary"
           as={Link}
           to="/administrador"
+          className="w-100"
           style={{ fontSize: "16px" }}
         >
           Regresar
@@ -67,6 +52,7 @@ export default function CrearPublicacion() {
                   required
                   placeholder="Titulo"
                   onChange={(ev) => setTitulo(ev.target.value)}
+                  value={titulo}
                 />
               </Form.Group>
 
@@ -82,6 +68,7 @@ export default function CrearPublicacion() {
                   rows={5}
                   placeholder="Contenido del articulo"
                   onChange={(ev) => setContenido(ev.target.value)}
+                  value={contenido}
                 />
               </Form.Group>
 
@@ -95,13 +82,12 @@ export default function CrearPublicacion() {
 
               {/* Link */}
               <Form.Group className="mt-2">
-                <Form.Label>
-                  Link de publicación en otra red social (Opcional)
-                </Form.Label>
+                <Form.Label>Link de la publicación</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Link de la publicación"
+                  placeholder="Titulo"
                   onChange={(ev) => setLink(ev.target.value)}
+                  value={link}
                 />
               </Form.Group>
 
@@ -116,6 +102,7 @@ export default function CrearPublicacion() {
                 </Button>
               </Form.Group>
             </Form>
+            <br />
             {message && (
               <Alert variant="success" className="mt-3">
                 {message}
@@ -125,6 +112,8 @@ export default function CrearPublicacion() {
           </Card.Body>
         </Card>
       </Container>
+      <hr />
+      <ListaPublicaciones />
     </>
   );
 }

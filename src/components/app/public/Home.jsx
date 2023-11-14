@@ -4,7 +4,7 @@ import NavBar from "./../shared/Nav";
 import { Container } from "react-bootstrap";
 
 // Componente para ver publicaciones
-import Publicaciones from "../public/interfaces/Publicaciones";
+import CardPublicaciones from "./../private/admin/templates/CardPublicaciones";
 
 // Carrusel
 import Carrusel from "./Carrusel";
@@ -20,7 +20,7 @@ export default function Home() {
         <h1>Inicio</h1>
         <hr />
         <Carrusel />
-        <Publicaciones />
+        <CardPublicaciones />
       </Container>
     </>
   );

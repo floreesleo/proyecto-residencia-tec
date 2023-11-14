@@ -9,7 +9,12 @@ export default function NavBar() {
   return (
     <Navbar expand="lg" className="navegador">
       <Container>
-        <Navbar.Brand as={Link} to="/" className="titulo">
+        <Navbar.Brand
+          as={Link}
+          to="/"
+          className="titulo"
+          style={{ fontSize: "1rem" }}
+        >
           {" "}
           Colegio de arquitectos de Comitán
         </Navbar.Brand>

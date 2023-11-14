@@ -13,6 +13,7 @@ export default function Administrador() {
           variant="outline-primary"
           as={Link}
           to="/crear-publicacion"
+          className="w-100"
           style={{ fontSize: "16px" }}
         >
           Crear nueva publicación
@@ -22,13 +23,18 @@ export default function Administrador() {
           variant="outline-success"
           as={Link}
           to="/registrar-agremiado"
-          className="mt-2"
+          className="mt-2 w-100"
           style={{ fontSize: "16px" }}
         >
           Registrar agremiado
         </Button>
         <hr />
-        <Button variant="outline-danger" as={Link} to="/perfil">
+        <Button
+          variant="outline-danger"
+          as={Link}
+          to="/perfil"
+          className="w-100"
+        >
           Perfil
         </Button>
       </Container>

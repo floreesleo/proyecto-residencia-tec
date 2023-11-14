@@ -1,25 +1,34 @@
-import { Container, Card, Button } from "react-bootstrap";
+// React
+import { useEffect } from "react";
 
-import example1 from "./../../../../../assets/img/example-1.jpg";
+// Bootstrap
+import { Card, Button } from "react-bootstrap";
+
+// NewsContext
+import { useNews } from "../../../../../context/NewsContext";
 
 export default function CardPublicaciones() {
+  const { publicaciones, getPublicaciones } = useNews();
+
+  useEffect(() => {
+    getPublicaciones();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <Container className="text-center">
-      <Card style={{ width: "18rem" }} className="mb-3">
-        <Card.Body>
-          <Card.Title>Titulo de publicación</Card.Title>
-          <Card.Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            fermentum placerat consectetur. Etiam vel neque tempor, sollicitudin
-            magna et, ultricies justo. Sed vitae mi interdum, porttitor lectus
-            a, sodales justo.
-          </Card.Text>
-          <Card.Img variant="top" src={example1} />
-          <Button variant="outline-primary" className="mt-2">
-            Ver publicación en Facebook
-          </Button>
-        </Card.Body>
-      </Card>
-    </Container>
+    <div>
+      {publicaciones.map((publicacion) => (
+        <Card key={publicacion.id} className="mt-3">
+          <Card.Header as="h1">{publicacion.titulo}</Card.Header>
+          <Card.Body>
+            <Card.Text> {publicacion.contenido} </Card.Text>
+            <hr />
+            <Button variant="outline-success" href={publicacion.link}>
+              Ver publicación completa
+            </Button>
+          </Card.Body>
+        </Card>
+      ))}
+    </div>
   );
 }
