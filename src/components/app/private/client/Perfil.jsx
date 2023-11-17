@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
 import { UserAuth } from "../../../../context/AuthContext";
 
 //Supabase
-import { useUser, useSession } from "@supabase/auth-helpers-react";
+import { useSession } from "@supabase/auth-helpers-react";
 import { supabase } from "../../../../supabase/client";
 
 export default function Perfil() {
@@ -30,7 +30,6 @@ export default function Perfil() {
 
   // constantes de supabase
   const sessionSupabase = useSession();
-  const user = useUser();
 
   const [show, setShow] = useState(false);
 
@@ -55,24 +54,22 @@ export default function Perfil() {
 
   const handlePasswordChange = async (e) => {
     e.preventDefault();
-
     if (newPassword === confirmPassword) {
       try {
-        if (user) {
-          const { error } = await supabase.auth.api.updateUser(user.id, {
-            password: newPassword,
-          });
+        const { error } = await supabase.auth.updateUser({
+          email: sessionSupabase.user.email,
+          password: newPassword,
+        });
 
-          if (error) throw error;
+        if (error) setError("Error al actualizar contraseña: " + error);
 
-          setMessage("Contraseña actualizada exitosamente.");
-        }
+        setMessage("Contraseña actualizada exitosamente.");
       } catch (error) {
         console.error(error);
         setError("Hubo un error al actualizar la contraseña: " + error);
       }
     } else {
-      setError("Las contraseñas no coinciden.");
+      setError("Las contraseñas nuevas no coinciden.");
     }
   };
 

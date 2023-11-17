@@ -11,6 +11,10 @@ export default function ResetPassword() {
   // AuthContext
   const { resetPassword, error, message, setEmailRef } = UserAuth();
 
+  const handleSubmit = async () => {
+    resetPassword();
+  };
+
   return (
     <>
       <Container className="mt-5">
@@ -23,7 +27,7 @@ export default function ResetPassword() {
             {error && <Alert variant="danger">{error}</Alert>}
 
             {/* Formulario de restablecer contraseña */}
-            <Form onSubmit={resetPassword}>
+            <Form onSubmit={handleSubmit}>
               {/* Email */}
               <Form.Group>
                 <Form.Label

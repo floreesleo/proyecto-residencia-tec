@@ -6,6 +6,8 @@ import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 
 import { useNavigate } from "react-router-dom";
 
+import { supabase } from "./../supabase/client";
+
 const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
@@ -107,24 +109,16 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   async function resetPassword(e) {
-    //! Corregir - Hacer que funcione
     e.preventDefault();
-
     try {
-      const { error } = await supabaseClient.auth.resetPasswordForEmail({
-        emailRef,
-      });
+      const { error } = supabase.auth.resetPasswordForEmail(emailRef);
 
-      if (error) {
-        setError(
-          "A ocurrido un error durante el restablecimiento de contraseña 😥: " +
-            error.message
-        );
-      } else {
-        setMessage("Revice su bandeja para futuras instrucciones");
-      }
+      if (error) setError("Error al restablecer contraseña");
+
+      setMessage("Confirm");
     } catch (error) {
       console.error(error);
+      setError(error);
     }
   }
 
