@@ -9,7 +9,7 @@ import Documentos from "./Documentos";
 import Login from "../../../auth/Login";
 
 export default function Sesion() {
-  const { user, setUser } = UserAuth();
+  const { user, setUser, admin } = UserAuth();
 
   const supabaseClient = useSupabaseClient();
 
@@ -20,18 +20,15 @@ export default function Sesion() {
     //| con authListener sabremos todo lo que pase con la data del usuario que se quiera autenticar
     const { data: authListener } = supabaseClient.auth.onAuthStateChange(
       async (event, session) => {
-        //| el event es para saber si se ha cerrado sesión, si ha iniciado sesión, si ha cambiado el usuario
-        //| con session puedo saber si ya hay sesion iniciada o no hay nada
-        console.log("#####################################");
-        console.log("Sesión de supabase: ", session);
-        console.log("Evento de supabase ", event);
-
         if (session == null) {
           navigate("/login");
         } else {
           setUser(session?.user.user_metadata);
-          console.log("Data del usuario: ", session?.user.user_metadata);
-          navigate("/documentos");
+          if (admin === true) {
+            navigate("/administrador");
+          } else {
+            navigate("/documentos");
+          }
         }
       }
     );

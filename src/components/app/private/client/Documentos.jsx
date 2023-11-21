@@ -154,9 +154,6 @@ export default function Documentos() {
                     >
                       Descargar documento
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      Editar nombre
-                    </Dropdown.Item>
                     <Dropdown.Item onClick={() => deleteDoc(documento.name)}>
                       Borrar documento
                     </Dropdown.Item>

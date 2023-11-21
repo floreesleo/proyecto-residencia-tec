@@ -23,7 +23,11 @@ export default function CardPublicaciones() {
           <Card.Body>
             <Card.Text> {publicacion.contenido} </Card.Text>
             <hr />
-            <Button variant="outline-success" href={publicacion.link}>
+            <Button
+              variant="outline-success"
+              href={publicacion.link}
+              target="_blank"
+            >
               Ver publicación completa
             </Button>
           </Card.Body>

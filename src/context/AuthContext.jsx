@@ -25,8 +25,15 @@ export const AuthContextProvider = ({ children }) => {
   const supabaseClient = useSupabaseClient();
 
   // Alertas
-  const [message, setMessage] = useState("");
+  const [messageSignIn, setMessageSignIn] = useState("");
+  const [messageSignUp, setMessageSignUp] = useState("");
+  const [messageResetPass, setMessageResetPass] = useState("");
+
   const [error, setError] = useState("");
+  const [errorSignIn, setErrorSignIn] = useState("");
+  const [errorSignUp, setErrorSignUp] = useState("");
+  const [errorSignOut, setErrorSignOut] = useState("");
+  const [errorResetPass, setErrorResetPass] = useState("");
 
   //? Navegador
   const navigate = useNavigate();
@@ -41,7 +48,8 @@ export const AuthContextProvider = ({ children }) => {
         password: passwordRef,
       });
 
-      if (error) setError("A ocurrido un error al iniciar sesión 😥: " + error);
+      if (error)
+        setErrorSignIn("A ocurrido un error al iniciar sesión 😥: " + error);
 
       if (emailRef == "admin@colegio.com" && passwordRef == "administrador") {
         setAdmin(true);
@@ -50,7 +58,7 @@ export const AuthContextProvider = ({ children }) => {
         setAdmin(false);
       }
 
-      setMessage("Autenticación correcta");
+      setMessageSignIn("Autenticación correcta");
       return data;
     } catch (error) {
       console.error(error);
@@ -67,42 +75,23 @@ export const AuthContextProvider = ({ children }) => {
       });
 
       if (error)
-        setError(
+        setErrorSignUp(
           "A ocurrido un error durante la creación de la cuenta 😥: " + error
         );
 
-      setMessage("Revice su bandeja para futuras instrucciones");
+      setMessageSignUp(
+        "Agremiado registrado exitosamente. El agremiado puede revisar su bandeja de entrada para su pusterior inicio de sesión."
+      );
       return data;
     } catch (error) {
       console.error(error);
-    }
-  }
-
-  async function signInWithGoogle() {
-    try {
-      const { data, error } = await supabaseClient.auth.signInWithOAuth({
-        provider: "google",
-        options: {
-          scopes: "https://www.googleapis.com/auth/calendar",
-        },
-      });
-
-      if (error) {
-        setError("A ocurrido un error durante la autenticación: " + error);
-      }
-
-      setMessage("Autenticación con Google valida");
-      return data;
-    } catch (error) {
-      console.error(error);
-      setError("A ocurrido un error durante la autenticación: " + error);
     }
   }
 
   async function signOut() {
     const { error } = await supabaseClient.auth.signOut();
     if (error) {
-      setError("A ocurrido un error al cerrar sesión: " + error);
+      setErrorSignOut("A ocurrido un error al cerrar sesión: " + error);
     }
     setAdmin(false);
     navigate("/");
@@ -113,9 +102,11 @@ export const AuthContextProvider = ({ children }) => {
     try {
       const { error } = supabase.auth.resetPasswordForEmail(emailRef);
 
-      if (error) setError("Error al restablecer contraseña");
+      if (error) setErrorResetPass("Error al restablecer contraseña: " + error);
 
-      setMessage("Confirm");
+      setMessageResetPass(
+        "Revice su bandeja de entrada para restablecer su contraseña."
+      );
     } catch (error) {
       console.error(error);
       setError(error);
@@ -131,14 +122,6 @@ export const AuthContextProvider = ({ children }) => {
         console.log("#####################################");
         console.log("Sesión de supabase: ", session);
         console.log("Evento de supabase ", event);
-
-        // if (session == null) {
-        //   navigate("/login");
-        // } else {
-        //   setUser(session?.user.user_metadata);
-        //   console.log("Data del usuario: ", session?.user.user_metadata);
-        //   navigate("/");
-        // }
       }
     );
     return () => {
@@ -152,17 +135,22 @@ export const AuthContextProvider = ({ children }) => {
       value={{
         signInWithEmail,
         signUpAccount,
-        signInWithGoogle,
         signOut,
         resetPassword,
         user,
-        message,
         error,
         sessionSupabase,
         setEmailRef,
         setPasswordRef,
         admin,
         setUser,
+        messageSignIn,
+        messageSignUp,
+        messageResetPass,
+        errorSignIn,
+        errorSignUp,
+        errorSignOut,
+        errorResetPass,
       }}
     >
       {children}

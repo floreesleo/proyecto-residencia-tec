@@ -9,7 +9,8 @@ import { UserAuth } from "../../context/AuthContext";
 
 export default function ResetPassword() {
   // AuthContext
-  const { resetPassword, error, message, setEmailRef } = UserAuth();
+  const { resetPassword, errorResetPass, messageResetPass, setEmailRef } =
+    UserAuth();
 
   const handleSubmit = async () => {
     resetPassword();
@@ -23,8 +24,10 @@ export default function ResetPassword() {
             <h1 className="text-center mb-4" style={{ color: "#fff" }}>
               Restablecer contraseña
             </h1>
-            {message && <Alert variant="success">{message}</Alert>}
-            {error && <Alert variant="danger">{error}</Alert>}
+            {messageResetPass && (
+              <Alert variant="success">{messageResetPass}</Alert>
+            )}
+            {errorResetPass && <Alert variant="danger">{errorResetPass}</Alert>}
 
             {/* Formulario de restablecer contraseña */}
             <Form onSubmit={handleSubmit}>
@@ -40,7 +43,7 @@ export default function ResetPassword() {
                 </Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="example@example.com"
+                  placeholder="ejemplo@dominio.com"
                   onChange={(ev) => setEmailRef(ev.target.value)}
                 />
               </Form.Group>

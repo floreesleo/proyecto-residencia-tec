@@ -12,8 +12,13 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   // AuthContext
-  const { signInWithEmail, error, message, setEmailRef, setPasswordRef } =
-    UserAuth();
+  const {
+    signInWithEmail,
+    errorSignIn,
+    messageSignIn,
+    setEmailRef,
+    setPasswordRef,
+  } = UserAuth();
 
   // Variables para ver contraseña
   const [valorPassword, setValorPassword] = useState("password");
@@ -35,8 +40,12 @@ export default function Login() {
             <h1 className="text-center mb-4" style={{ color: "#fff" }}>
               Inicio de sesión
             </h1>
-            {message && <Alert variant="success">{message}</Alert>}
-            {error && <Alert variant="danger">{error}</Alert>}
+            <Alert variant="info" style={{ textAlign: "center" }}>
+              Inicio de sesión para gestor de documentos unicamente para
+              agremiados del Colegio de Arquitectos de Comitán.
+            </Alert>
+            {messageSignIn && <Alert variant="success">{messageSignIn}</Alert>}
+            {errorSignIn && <Alert variant="danger">{errorSignIn}</Alert>}
 
             {/* Formulario de Login */}
             <Form onSubmit={signInWithEmail}>
@@ -52,7 +61,7 @@ export default function Login() {
                 </Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="example@example.com"
+                  placeholder="ejemplo@dominio.com"
                   onChange={(ev) => setEmailRef(ev.target.value)}
                 />
               </Form.Group>

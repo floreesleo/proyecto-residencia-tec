@@ -12,8 +12,13 @@ import { UserAuth } from "../../../../../context/AuthContext";
 
 export default function Registro() {
   // AuthContext
-  const { signUpAccount, message, error, setEmailRef, setPasswordRef } =
-    UserAuth();
+  const {
+    signUpAccount,
+    messageSignUp,
+    errorSignUp,
+    setEmailRef,
+    setPasswordRef,
+  } = UserAuth();
 
   // Variables para ver la contraseña
   const [valorPassword, setValorPassword] = useState("password");
@@ -42,8 +47,8 @@ export default function Registro() {
         <Card className="mt-3">
           <Card.Body>
             <h1 className="text-center mb-4">Registrar agremiado</h1>
-            {message && <Alert variant="success">{message}</Alert>}
-            {error && <Alert variant="danger">{error}</Alert>}
+            {messageSignUp && <Alert variant="success">{messageSignUp}</Alert>}
+            {errorSignUp && <Alert variant="danger">{errorSignUp}</Alert>}
 
             {/* Formulario de SignUp */}
             <Form onSubmit={signUpAccount}>
@@ -89,8 +94,6 @@ export default function Registro() {
             <h1 className="text-center mb-4">
               Agregar agremiado a la aplicación
             </h1>
-            {message && <Alert variant="success">{message}</Alert>}
-            {error && <Alert variant="danger">{error}</Alert>}
 
             {/* Formulario de SignUp */}
             <Form>
