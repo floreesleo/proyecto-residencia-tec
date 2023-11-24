@@ -1,26 +1,41 @@
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 
 export default function FooterBar() {
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark" fixed="bottom">
-        <Nav className="justify-content-center" activeKey="/home">
-          <Nav.Item>
-            <Nav.Link href="/home">Colegio de arquitectos de Comitán</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-1">Link</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-2">Link</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="disabled" disabled>
-              Disabled
-            </Nav.Link>
-          </Nav.Item>
-        </Nav>
-      </Navbar>
+      <Nav className="justify-content-center" fixed="bottom">
+        <Nav.Item>
+          <Nav.Link disabled>Colegio de arquitectos de Comitán</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-1"
+            href="https://www.facebook.com/arquitectos.de.comitan"
+            target="_blank"
+          >
+            Facebook
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-2"
+            href="https://www.instagram.com/arquitectosdecomitan_/"
+            target="_blank"
+          >
+            Instagram
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-4" disabled>
+            +52 (963) 632 6561
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-4" disabled>
+            arquitectosdecomitan@outlook.es
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
     </>
   );
 }
