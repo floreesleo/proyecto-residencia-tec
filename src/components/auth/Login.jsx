@@ -40,7 +40,7 @@ export default function Login() {
             <h1 className="text-center mb-4" style={{ color: "#fff" }}>
               Inicio de sesión
             </h1>
-            <Alert variant="info" style={{ textAlign: "center" }}>
+            <Alert variant="dark" style={{ textAlign: "center" }}>
               Inicio de sesión para gestor de documentos unicamente para
               agremiados del Colegio de Arquitectos de Comitán.
             </Alert>

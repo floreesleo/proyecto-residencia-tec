@@ -7,9 +7,9 @@ import { Container, Button, Form, Card, Alert } from "react-bootstrap";
 // react-router-dom
 import { Link } from "react-router-dom";
 
-import { useNews } from "./../../../../../context/NewsContext";
+import { useNews } from "../../../../../context/NewsContext";
 
-import ListaPublicaciones from "./../templates/ListaPublicaciones";
+import ListaPublicaciones from "../templates/ListaPublicaciones";
 
 export default function CrearPublicacion() {
   const { crearPublicacion, message, error } = useNews();
@@ -93,11 +93,7 @@ export default function CrearPublicacion() {
 
               {/* Botón Submit */}
               <Form.Group className="mt-2">
-                <Button
-                  type="submit"
-                  className="mt-2 w-100"
-                  variant="outline-primary"
-                >
+                <Button type="submit" className="mt-2 w-100" variant="primary">
                   Crear publicación
                 </Button>
               </Form.Group>
@@ -112,7 +108,7 @@ export default function CrearPublicacion() {
           </Card.Body>
         </Card>
       </Container>
-      <hr />
+      <br />
       <ListaPublicaciones />
     </>
   );

@@ -21,8 +21,10 @@ import Sesion from "../components/app/private/client/Sesion";
 
 // Administrador
 import Administrador from "./../components/app/private/admin/Administrador";
-import CrearPublicacion from "../components/app/private/admin/interfaces/crearPublicacion";
-import Registro from "../components/app/private/admin/interfaces/Registrar";
+import CRUDPublicaciones from "../components/app/private/admin/interfaces/CRUDPublicaciones";
+import Registro from "../components/app/private/admin/interfaces/RegistrarAgremiado";
+import Agremiado from "../components/app/private/admin/interfaces/AgregarAgremiado";
+import DatosColegio from "../components/app/private/admin/interfaces/DatosColegio";
 
 export default function MyRoutes() {
   return (
@@ -38,8 +40,10 @@ export default function MyRoutes() {
       <Route path="/agremiados" element={<Agremiados />} />
       {/* ADMINISTRADOR */}
       <Route path="/administrador" element={<Administrador />} />
-      <Route path="/crear-publicacion" element={<CrearPublicacion />} />
+      <Route path="/crear-publicacion" element={<CRUDPublicaciones />} />
       <Route path="/registrar-agremiado" element={<Registro />} />
+      <Route path="/agregar-agremiado" element={<Agremiado />} />
+      <Route path="/datos-colegio" element={<DatosColegio />} />
       {/* AUTH */}
       <Route path="/login" element={<Login />} />
       <Route path="/restablecer-contraseña" element={<ResetPassword />} />

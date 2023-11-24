@@ -1,5 +1,6 @@
 import { AuthContextProvider } from "./context/AuthContext";
 import { NewsContextProvider } from "./context/NewsContext";
+import { ArqContextProvider } from "./context/ArqContext";
 import MyRoutes from "./routers/routes";
 
 export default function App() {
@@ -7,7 +8,9 @@ export default function App() {
     <>
       <AuthContextProvider>
         <NewsContextProvider>
-          <MyRoutes />
+          <ArqContextProvider>
+            <MyRoutes />
+          </ArqContextProvider>
         </NewsContextProvider>
       </AuthContextProvider>
     </>
