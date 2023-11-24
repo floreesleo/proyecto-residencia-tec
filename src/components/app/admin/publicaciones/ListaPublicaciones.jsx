@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Container, Card, Button, Accordion } from "react-bootstrap";
 
 // NewsContext
-import { useNews } from "../../../../../context/NewsContext";
+import { useNews } from "../../../../context/NewsContext";
 
 export default function ListaPublicaciones() {
   const { publicaciones, getPublicaciones } = useNews();

@@ -8,7 +8,7 @@ import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // AuthContext
-import { UserAuth } from "../../../../../context/AuthContext";
+import { UserAuth } from "../../../../context/AuthContext";
 
 export default function Registro() {
   // AuthContext

@@ -1,10 +1,10 @@
-import NavBar from "../../shared/Nav";
+import NavBar from "../navegacion/Nav";
 
 // Bootstrap
 import { Container } from "react-bootstrap";
 
 // Tarjeta de publicaciones
-import CardAgremiados from "../../private/admin/templates/CardAgremiados";
+import CardAgremiados from "../admin/agremiados/CardAgremiados";
 
 export default function Agremiados() {
   return (
@@ -13,10 +13,6 @@ export default function Agremiados() {
       <Container className="mt-2">
         <h1>Nuestros agremiados</h1>
         <hr />
-        <CardAgremiados />
-        <CardAgremiados />
-        <CardAgremiados />
-        <CardAgremiados />
         <CardAgremiados />
       </Container>
     </>

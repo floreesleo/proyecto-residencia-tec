@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { UserAuth } from "../../../../context/AuthContext";
+import { UserAuth } from "../../../context/AuthContext";
 
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 import Documentos from "./Documentos";
-import Login from "../../../auth/Login";
+import Login from "../../auth/Login";
 
 export default function Sesion() {
   const { user, setUser, admin } = UserAuth();

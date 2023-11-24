@@ -1,30 +1,30 @@
 // Navegación de la aplicación
 import { Routes, Route } from "react-router-dom";
 
-import NotFound from "./../components/app/public/NotFound";
-import Home from "./../components/app/public/Home";
+import NotFound from "./../components/app/home/NotFound";
+import Home from "./../components/app/home/Home";
 
 // Colegio
-import AboutUs from "./../components/app/public/SobreNosotros";
+import AboutUs from "./../components/app/home/SobreNosotros";
 
 //Autenticacion
 import Login from "./../components/auth/Login";
 import ResetPassword from "./../components/auth/ResetPassword";
 
 // Perfil
-import Perfil from "./../components/app/private/client/Perfil";
+import Perfil from "./../components/app/client/Perfil";
 
 // Modulos
-import Documentos from "../components/app/private/client/Documentos";
-import Agremiados from "../components/app/public/interfaces/Agremiados";
-import Sesion from "../components/app/private/client/Sesion";
+import Documentos from "../components/app/client/Documentos";
+import Agremiados from "../components/app/home/Agremiados";
+import Sesion from "../components/app/client/Sesion";
 
 // Administrador
-import Administrador from "./../components/app/private/admin/Administrador";
-import CRUDPublicaciones from "../components/app/private/admin/interfaces/CRUDPublicaciones";
-import Registro from "../components/app/private/admin/interfaces/RegistrarAgremiado";
-import Agremiado from "../components/app/private/admin/interfaces/AgregarAgremiado";
-import DatosColegio from "../components/app/private/admin/interfaces/DatosColegio";
+import Administrador from "./../components/app/admin/Administrador";
+import CRUDPublicaciones from "../components/app/admin/publicaciones/CRUDPublicaciones";
+import Registro from "../components/app/admin/agremiados/RegistrarAgremiado";
+import Agremiado from "../components/app/admin/agremiados/AgregarAgremiado";
+import DatosColegio from "../components/app/admin/datos-colegio/DatosColegio";
 
 export default function MyRoutes() {
   return (

@@ -7,9 +7,9 @@ import { Container, Button, Form, Card, Alert } from "react-bootstrap";
 // react-router-dom
 import { Link } from "react-router-dom";
 
-import { useNews } from "../../../../../context/NewsContext";
+import { useNews } from "../../../../context/NewsContext";
 
-import ListaPublicaciones from "../templates/ListaPublicaciones";
+import ListaPublicaciones from "./ListaPublicaciones";
 
 export default function CrearPublicacion() {
   const { crearPublicacion, message, error } = useNews();

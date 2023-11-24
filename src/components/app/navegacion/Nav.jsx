@@ -7,7 +7,13 @@ import "./../../../assets/css/nav.css";
 
 export default function NavBar() {
   return (
-    <Navbar expand="lg" className="navegador">
+    <Navbar
+      expand="lg"
+      className="navegador"
+      bg="primary"
+      data-bs-theme="dark"
+      fixed="top"
+    >
       <Container>
         <Navbar.Brand
           as={Link}

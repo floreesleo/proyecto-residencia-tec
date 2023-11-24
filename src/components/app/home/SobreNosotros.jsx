@@ -1,4 +1,4 @@
-import NavBar from "./../shared/Nav";
+import NavBar from "../navegacion/Nav";
 
 // Bootstrap
 import { Container, Card } from "react-bootstrap";
@@ -16,7 +16,7 @@ export default function AboutUs() {
   return (
     <>
       <NavBar />
-      <Container className="mt-2">
+      <Container style={{ marginTop: "4rem", marginBottom: "6rem" }}>
         <h2>Sobre nosotros</h2>
         <Card>
           <Card.Body>

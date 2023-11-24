@@ -13,17 +13,18 @@ import {
 } from "react-bootstrap";
 
 // Navbar
-import NavBar from "../../shared/Nav";
+import NavBar from "../navegacion/Nav";
+import FooterBar from "../navegacion/Footer";
 
 // react-router-dom
 import { Link } from "react-router-dom";
 
 //AuthContext
-import { UserAuth } from "../../../../context/AuthContext";
+import { UserAuth } from "../../../context/AuthContext";
 
 //Supabase
 import { useSession } from "@supabase/auth-helpers-react";
-import { supabase } from "../../../../supabase/client";
+import { supabase } from "../../../supabase/client";
 
 export default function Perfil() {
   const { signOut } = UserAuth();
@@ -76,7 +77,7 @@ export default function Perfil() {
   return (
     <>
       <NavBar />
-      <Container className="mt-2 ">
+      <Container style={{ marginTop: "4rem", marginBottom: "6rem" }}>
         <Card>
           <Card.Img variant="top" src={sessionSupabase.user.picture} />
           <Card.Body>
@@ -99,6 +100,7 @@ export default function Perfil() {
           Regresar
         </Button>
       </Container>
+      <FooterBar />
 
       {/* MODAL */}
       <Modal

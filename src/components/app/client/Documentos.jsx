@@ -1,7 +1,8 @@
 // React
 import { useEffect, useState, useRef } from "react";
 
-import NavBar from "../../shared/Nav";
+import NavBar from "../navegacion/Nav";
+import FooterBar from "../navegacion/Footer";
 
 // Bootstrap
 import {
@@ -112,7 +113,7 @@ export default function Documentos() {
   return (
     <>
       <NavBar />
-      <Container className="mt-2">
+      <Container style={{ marginTop: "4rem", marginBottom: "6rem" }}>
         <Button variant="outline-dark" as={Link} to="/perfil" size="sm">
           Ver perfil
         </Button>
@@ -164,7 +165,7 @@ export default function Documentos() {
           })}
         </Row>
       </Container>
-
+      <FooterBar />
       {/* MODAL */}
       <Modal
         show={showFile}
