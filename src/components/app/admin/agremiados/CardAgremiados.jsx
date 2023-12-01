@@ -2,7 +2,7 @@ import { Card } from "react-bootstrap";
 
 export default function CardAgremiados() {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem" }} className="mt-2">
       <Card.Body>
         <Card.Title>Nombre del agremiado</Card.Title>
         <Card.Link href="#">Facebook</Card.Link>

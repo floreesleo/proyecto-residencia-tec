@@ -1,7 +1,7 @@
 import NavBar from "../navegacion/Nav";
 
 // Bootstrap
-import { Container } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 
 // Tarjeta de publicaciones
 import CardAgremiados from "../admin/agremiados/CardAgremiados";
@@ -10,10 +10,22 @@ export default function Agremiados() {
   return (
     <>
       <NavBar />
-      <Container className="mt-2">
-        <h1>Nuestros agremiados</h1>
+      <Container style={{ marginTop: "4rem", marginBottom: "6rem" }}>
+        <Card>
+          <Card.Body>
+            <Card.Title>Mesa directiva</Card.Title>
+            <CardAgremiados />
+            <CardAgremiados />
+          </Card.Body>
+        </Card>
         <hr />
-        <CardAgremiados />
+        <Card>
+          <Card.Body>
+            <Card.Title>Agremiados</Card.Title>
+            <CardAgremiados />
+            <CardAgremiados />
+          </Card.Body>
+        </Card>
       </Container>
     </>
   );
