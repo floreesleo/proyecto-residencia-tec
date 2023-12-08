@@ -1,10 +1,11 @@
 import NavBar from "../navegacion/Nav";
 
 // Bootstrap
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Row } from "react-bootstrap";
 
 // Tarjeta de publicaciones
 import CardAgremiados from "../admin/agremiados/CardAgremiados";
+import CardDirectivos from "../admin/agremiados/CardMesaDirectiva";
 
 export default function Agremiados() {
   return (
@@ -14,16 +15,18 @@ export default function Agremiados() {
         <Card>
           <Card.Body>
             <Card.Title>Mesa directiva</Card.Title>
-            <CardAgremiados />
-            <CardAgremiados />
+            <Row xs={1} lg={3} className="g-4">
+              <CardDirectivos />
+            </Row>
           </Card.Body>
         </Card>
         <hr />
         <Card>
           <Card.Body>
             <Card.Title>Agremiados</Card.Title>
-            <CardAgremiados />
-            <CardAgremiados />
+            <Row xs={1} lg={3} className="g-4">
+              <CardAgremiados />
+            </Row>
           </Card.Body>
         </Card>
       </Container>

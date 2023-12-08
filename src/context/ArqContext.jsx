@@ -2,19 +2,20 @@ import { createContext, useContext, useState } from "react";
 
 import { supabase } from "./../supabase/client";
 
-export const NewsContext = createContext();
+export const ArqContext = createContext();
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const useNews = () => {
-  const context = useContext(NewsContext);
-  if (!context)
-    throw new Error("useNews debe estar con un NewsContextProvider");
+export const useArq = () => {
+  const context = useContext(ArqContext);
+  if (!context) throw new Error("useArq debe estar con un NewsContextProvider");
   return context;
 };
 
 // eslint-disable-next-line react/prop-types
 export const ArqContextProvider = ({ children }) => {
   const [agremiados, setAgremiados] = useState([]);
+  const [directivos, setDirectivos] = useState([]);
+  const [datosColegio, setDatosColegio] = useState([]);
 
   //+ ALERTAS Y MENSAJES
   const [message, setMessage] = useState("");
@@ -31,12 +32,13 @@ export const ArqContextProvider = ({ children }) => {
     setAgremiados(data);
   };
 
-  const agregarAgremiado = async (titulo, contenido, link) => {
+  const agregarAgremiado = async (nombre, facebook, twitter, instagram) => {
     try {
       const { error, data } = await supabase.from("agremiados").insert({
-        titulo: titulo,
-        contenido: contenido,
-        link: link,
+        nombre: nombre,
+        facebook: facebook,
+        twitter: twitter,
+        instagram: instagram,
       });
 
       if (error) throw error;
@@ -51,19 +53,42 @@ export const ArqContextProvider = ({ children }) => {
     }
   };
 
+  const getDirectivos = async () => {
+    const { error, data } = await supabase
+      .from("directivos")
+      .select()
+      .order("id", { descending: true });
+
+    if (error) throw error;
+
+    setDirectivos(data);
+  };
+
+  const getDatosColegio = async () => {
+    const { error, data } = await supabase.from("datosColegio").select();
+
+    if (error) throw error;
+
+    setDatosColegio(data);
+  };
+
   return (
-    <NewsContext.Provider
+    <ArqContext.Provider
       value={{
         //* Variables
         agremiados,
+        directivos,
+        datosColegio,
         message,
         error,
         //| Funciones
         getAgremiados,
         agregarAgremiado,
+        getDirectivos,
+        getDatosColegio,
       }}
     >
       {children}
-    </NewsContext.Provider>
+    </ArqContext.Provider>
   );
 };

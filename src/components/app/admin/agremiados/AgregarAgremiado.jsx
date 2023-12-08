@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Card,
   Form,
@@ -7,7 +9,20 @@ import {
   Alert,
 } from "react-bootstrap";
 
+import { useArq } from "./../../../../context/ArqContext";
+
 export default function AgregarAgremiado() {
+  const { agregarAgremiado } = useArq();
+
+  const [nombre, setNombre] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [instagram, setInstagram] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    agregarAgremiado(nombre, facebook, twitter, instagram);
+  };
   return (
     <>
       <Container className="mt-3">
@@ -15,16 +30,23 @@ export default function AgregarAgremiado() {
           <Card.Body>
             <h1 className="mb-4">Agregar agremiado a la aplicación</h1>
             <Alert variant="info" style={{ textAlign: "center" }}>
-              Agregar agremiado al apartado de "Agremiados" en la aplicación.
+              Agregar agremiado al apartado de <b>Agremiados</b> en la
+              aplicación.
             </Alert>
             {/* Formulario de SignUp */}
-            <Form>
+            <Form onSubmit={handleSubmit}>
               {/* Nombre del agremiado */}
               <Form.Group>
                 <Form.Label>
                   Nombre completo del agremiado del agremiado
                 </Form.Label>
-                <Form.Control type="text" placeholder="Nombre del agramiado" />
+                <Form.Control
+                  type="text"
+                  required
+                  placeholder="Nombre del agramiado"
+                  onChange={(ev) => setNombre(ev.target.value)}
+                  value={nombre}
+                />
               </Form.Group>
 
               <hr />
@@ -38,6 +60,8 @@ export default function AgregarAgremiado() {
                       <Form.Control
                         type="text"
                         placeholder="URL del Facebook"
+                        onChange={(ev) => setFacebook(ev.target.value)}
+                        value={facebook}
                       />
                     </Form.Group>
 
@@ -47,13 +71,20 @@ export default function AgregarAgremiado() {
                       <Form.Control
                         type="text"
                         placeholder="URL de Instagram"
+                        onChange={(ev) => setInstagram(ev.target.value)}
+                        value={instagram}
                       />
                     </Form.Group>
 
                     {/* Twitter */}
                     <Form.Group>
                       <Form.Label>Twitter</Form.Label>
-                      <Form.Control type="text" placeholder="URL de Twitter" />
+                      <Form.Control
+                        type="text"
+                        placeholder="URL de Twitter"
+                        onChange={(ev) => setTwitter(ev.target.value)}
+                        value={twitter}
+                      />
                     </Form.Group>
                   </Accordion.Body>
                 </Accordion.Item>

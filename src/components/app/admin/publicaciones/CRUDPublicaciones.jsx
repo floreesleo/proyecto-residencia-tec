@@ -60,14 +60,6 @@ export default function CrearPublicacion() {
                 />
               </Form.Group>
 
-              <Form.Group controlId="formFile" className="mt-2">
-                <Form.Label>Subir imagen</Form.Label>
-                <Form.Control
-                  type="file"
-                  accept="image/png, image/jpge, image/jpg, .doc, .docx, .txt, .pdf"
-                />
-              </Form.Group>
-
               {/* Link */}
               <Form.Group className="mt-2">
                 <Form.Label>Link de la publicación</Form.Label>

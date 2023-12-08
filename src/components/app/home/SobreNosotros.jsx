@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import NavBar from "../navegacion/Nav";
 
 // Bootstrap
@@ -12,87 +14,85 @@ import {
   faPenNib,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { useArq } from "./../../../context/ArqContext";
+
 export default function AboutUs() {
+  const { getDatosColegio, datosColegio } = useArq();
+
+  useEffect(() => {
+    getDatosColegio();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <NavBar />
       <Container style={{ marginTop: "4rem", marginBottom: "6rem" }}>
         <h2>Sobre nosotros</h2>
-        <Card>
-          <Card.Body>
-            <Card.Title>
-              Nuestra misión <FontAwesomeIcon icon={faPenNib} />
-            </Card.Title>
-            <Card.Text style={{ textAlign: "justify" }}>
-              Nuestra misión es integrar un grupo unido; con profesionales de la
-              Arquitectura, comprometidos con nuestra profesión; preocupados por
-              nuestros colegas y todas aquellas instituciones o personas que
-              dependan de nuestro servicio.
-            </Card.Text>
-          </Card.Body>
-        </Card>
+        {datosColegio.map((dato) => (
+          <div key={dato.id}>
+            <Card>
+              <Card.Body>
+                <Card.Title>
+                  Nuestra misión <FontAwesomeIcon icon={faPenNib} />
+                </Card.Title>
+                <Card.Text style={{ textAlign: "justify" }}>
+                  {dato.mision}
+                </Card.Text>
+              </Card.Body>
+            </Card>
 
-        <br />
-        <Card>
-          <Card.Body>
-            <Card.Title>
-              Nuestro objetivo <FontAwesomeIcon icon={faBullseye} />
-            </Card.Title>
-            <Card.Text style={{ textAlign: "justify" }}>
-              Nuestro objetivo es velar por la ética, formación y ordenación del
-              libre ejercicio de la profesión de arquitecto, representar sus
-              intereses y difundir sus proyectos, en los más modernos campos de
-              actuación de la profesión, con esta certificación como Colegio de
-              profesionistas; el Colegio ofrecerá alternativas avanzadas de
-              tecnología, información e intercambio, compatibles, para ello
-              utilizará todos los Sistemas, Redes y Bases de Datos de mayor
-              eficiencia, interdependencia y acceso global. En marzo de 2022, se
-              obtiene la Certificación como Colegio de profesionistas en el
-              Estado de Chiapas con número GECH/UA/SE/DES/001/2022.
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        <br />
-        <Card className="mb-5">
-          <Card.Body>
-            <Card.Title>
-              Contactanos <FontAwesomeIcon icon={faAddressBook} />
-            </Card.Title>
-            <Card.Subtitle className="mb-2">Teléfono</Card.Subtitle>
-            <Card.Text className="text-muted">+52 (963) 632 6561</Card.Text>
-            <Card.Subtitle className="mb-2">Correo electronico</Card.Subtitle>
-            <Card.Text className="text-muted">
-              arquitectosdecomitan@outlook.es
-            </Card.Text>
-            <Card.Subtitle className="mb-2">
-              Nuestras redes sociales
-            </Card.Subtitle>
-            <Card.Text>
-              <a
-                href="https://www.facebook.com/arquitectos.de.comitan"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
-              </a>
-              <br />
-              <a
-                href="https://www.instagram.com/arquitectosdecomitan_/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-            </Card.Text>
-            <hr />
-            <Card.Subtitle className="mb-2">
-              Dirección <FontAwesomeIcon icon={faLocationDot} />
-            </Card.Subtitle>
-            <Card.Text className="text-muted">
-              1ra. calle sur poniente #35 barrio de guadalupe c.p. 30020
-            </Card.Text>
-          </Card.Body>
-        </Card>
+            <br />
+            <Card>
+              <Card.Body>
+                <Card.Title>
+                  Nuestro objetivo <FontAwesomeIcon icon={faBullseye} />
+                </Card.Title>
+                <Card.Text style={{ textAlign: "justify" }}>
+                  {dato.objetivo}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <br />
+            <Card className="mb-5">
+              <Card.Body>
+                <Card.Title>
+                  Contactanos <FontAwesomeIcon icon={faAddressBook} />
+                </Card.Title>
+                <Card.Subtitle className="mb-2">Teléfono</Card.Subtitle>
+                <Card.Text className="text-muted">{dato.telefono}</Card.Text>
+                <Card.Subtitle className="mb-2">
+                  Correo electronico
+                </Card.Subtitle>
+                <Card.Text className="text-muted">{dato.correo}</Card.Text>
+                <Card.Subtitle className="mb-2">
+                  Nuestras redes sociales
+                </Card.Subtitle>
+                <Card.Text>
+                  <a
+                    href={dato.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Facebook
+                  </a>
+                  <br />
+                  <a
+                    href={dato.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Instagram
+                  </a>
+                </Card.Text>
+                <hr />
+                <Card.Subtitle className="mb-2">
+                  Dirección <FontAwesomeIcon icon={faLocationDot} />
+                </Card.Subtitle>
+                <Card.Text className="text-muted">{dato.direccion}</Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
+        ))}
       </Container>
     </>
   );

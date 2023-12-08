@@ -26,7 +26,7 @@ export default function ListaPublicaciones() {
   return (
     <Container>
       <Accordion>
-        <Accordion.Item eventKey="0" style={{ backgroundColor: "#b2bec3" }}>
+        <Accordion.Item eventKey="0">
           <Accordion.Header>Lista de publicaciones</Accordion.Header>
           <Accordion.Body>
             {publicaciones.map((publicacion) => (
