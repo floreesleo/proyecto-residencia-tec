@@ -1,19 +1,13 @@
-// React
-import { useEffect } from "react";
-
-// Bootstrap
 import { Card, Button, Container } from "react-bootstrap";
-
-// NewsContext
-import { useNews } from "../../../../context/NewsContext";
-
+import { useArq } from "./../../../../context/ArqContext";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function CRUDPublicaciones() {
-  const { publicaciones, getPublicaciones } = useNews();
+export default function CRUDAgremiados() {
+  const { getAgremiados, agremiados } = useArq();
 
   useEffect(() => {
-    getPublicaciones();
+    getAgremiados();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -28,15 +22,19 @@ export default function CRUDPublicaciones() {
   return (
     <>
       <Container>
-        <h1>Modificar publicaciones</h1>
-        {publicaciones.map((publicacion) => (
-          <Card
-            style={{ width: "18rem", marginTop: "1rem" }}
-            key={publicacion.id}
-          >
+        {agremiados.map((agremiado) => (
+          <Card key={agremiado.id} style={{ width: "18rem" }} className="mt-2">
             <Card.Body>
-              <Card.Title>{publicacion.titulo}</Card.Title>
-              <Card.Text>{publicacion.contenido}</Card.Text>
+              <Card.Title>{agremiado.nombre}</Card.Title>
+              <Card.Link href={agremiado.facebook} target="_blank">
+                Facebook
+              </Card.Link>
+              <Card.Link href={agremiado.twitter} target="_blank">
+                Instagram
+              </Card.Link>
+              <Card.Link href={agremiado.instagram} target="_blank">
+                Twitter
+              </Card.Link>
               <Button
                 variant="outline-success"
                 className="w-100"
@@ -47,7 +45,7 @@ export default function CRUDPublicaciones() {
               <Button
                 variant="outline-danger"
                 className="w-100 mt-2"
-                onClick={() => eliminarPublicacion(publicacion.id)}
+                onClick={() => eliminarPublicacion(agremiado.id)}
               >
                 Eliminar publicación
               </Button>

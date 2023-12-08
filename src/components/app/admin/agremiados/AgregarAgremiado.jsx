@@ -11,6 +11,8 @@ import {
 
 import { useArq } from "./../../../../context/ArqContext";
 
+import { Link } from "react-router-dom";
+
 export default function AgregarAgremiado() {
   const { agregarAgremiado } = useArq();
 
@@ -99,6 +101,9 @@ export default function AgregarAgremiado() {
             </Form>
           </Card.Body>
         </Card>
+        <Button variant="danger" as={Link} to="/modificar-publicacion">
+          Modificar agremiados agregados
+        </Button>
       </Container>
     </>
   );

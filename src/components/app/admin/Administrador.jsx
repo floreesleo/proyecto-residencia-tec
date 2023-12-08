@@ -4,7 +4,7 @@ import { Container, Button, Accordion, Tab, Tabs } from "react-bootstrap";
 // react-router-dom
 import { Link } from "react-router-dom";
 
-import CRUDPublicaciones from "./publicaciones/CRUDPublicaciones";
+import CrearPublicaciones from "./publicaciones/CrearPublicacion";
 import RegistrarAgremiado from "./agremiados/RegistrarAgremiado";
 import AgregarAgremiado from "./agremiados/AgregarAgremiado";
 import MesaDirectiva from "./agremiados/MesaDirectiva";
@@ -24,7 +24,7 @@ export default function Administrador() {
           justify
         >
           <Tab eventKey="Publicaciones" title="Gestor de publicaciones">
-            <CRUDPublicaciones />
+            <CrearPublicaciones />
           </Tab>
           <Tab eventKey="profile" title="Agremiados">
             <Accordion>

@@ -21,9 +21,11 @@ import Sesion from "../components/app/client/Sesion";
 
 // Administrador
 import Administrador from "./../components/app/admin/Administrador";
-import CRUDPublicaciones from "../components/app/admin/publicaciones/CRUDPublicaciones";
+import CrearPublicacion from "../components/app/admin/publicaciones/CrearPublicacion";
+import CRUDPublicacion from "../components/app/admin/publicaciones/CRUDPublicaciones";
 import Registro from "../components/app/admin/agremiados/RegistrarAgremiado";
 import Agremiado from "../components/app/admin/agremiados/AgregarAgremiado";
+import CRUDAgremiado from "../components/app/admin/agremiados/CRUDAgremiados";
 import DatosColegio from "../components/app/admin/datos-colegio/DatosColegio";
 
 export default function MyRoutes() {
@@ -40,9 +42,11 @@ export default function MyRoutes() {
       <Route path="/agremiados" element={<Agremiados />} />
       {/* ADMINISTRADOR */}
       <Route path="/administrador" element={<Administrador />} />
-      <Route path="/crear-publicacion" element={<CRUDPublicaciones />} />
+      <Route path="/crear-publicacion" element={<CrearPublicacion />} />
+      <Route path="/modificar-publicacion" element={<CRUDPublicacion />} />
       <Route path="/registrar-agremiado" element={<Registro />} />
       <Route path="/agregar-agremiado" element={<Agremiado />} />
+      <Route path="/crud-agremiado" element={<CRUDAgremiado />} />
       <Route path="/datos-colegio" element={<DatosColegio />} />
       {/* AUTH */}
       <Route path="/login" element={<Login />} />
