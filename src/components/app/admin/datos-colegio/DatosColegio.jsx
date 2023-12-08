@@ -1,20 +1,9 @@
 import { Container, Card, Button, Form } from "react-bootstrap";
 
-import { Link } from "react-router-dom";
-
 export default function DatosColegio() {
   return (
     <>
       <Container className="mt-3">
-        <Button
-          variant="outline-primary"
-          as={Link}
-          to="/administrador"
-          className="w-100"
-          style={{ fontSize: "16px" }}
-        >
-          Regresar
-        </Button>
         <Card className="mt-3">
           <Card.Body>
             <h1 className="text-center mb-4">Datos del colegio</h1>

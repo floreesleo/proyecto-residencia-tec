@@ -4,9 +4,6 @@ import { useState } from "react";
 // Bootstrap
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 
-// react-router-dom
-import { Link } from "react-router-dom";
-
 // AuthContext
 import { UserAuth } from "../../../../context/AuthContext";
 
@@ -35,18 +32,12 @@ export default function Registro() {
   return (
     <>
       <Container className="mt-3">
-        <Button
-          variant="outline-primary"
-          as={Link}
-          to="/administrador"
-          className="w-100"
-          style={{ fontSize: "16px" }}
-        >
-          Regresar
-        </Button>
         <Card className="mt-3">
           <Card.Body>
-            <h1 className="text-center mb-4">Registrar agremiado</h1>
+            <h1 className="mb-4">Registrar agremiado</h1>
+            <Alert variant="info" style={{ textAlign: "center" }}>
+              Registro de agremiados para el gestor de documentos personal.
+            </Alert>
             {messageSignUp && <Alert variant="success">{messageSignUp}</Alert>}
             {errorSignUp && <Alert variant="danger">{errorSignUp}</Alert>}
 

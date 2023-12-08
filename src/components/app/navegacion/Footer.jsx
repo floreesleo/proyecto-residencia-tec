@@ -3,7 +3,11 @@ import { Nav } from "react-bootstrap";
 export default function FooterBar() {
   return (
     <>
-      <Nav className="justify-content-center" fixed="bottom">
+      <Nav
+        className="justify-content-center mb-2"
+        variant="tabs"
+        fixed="bottom"
+      >
         <Nav.Item>
           <Nav.Link disabled>Colegio de arquitectos de Comitán</Nav.Link>
         </Nav.Item>
@@ -27,7 +31,7 @@ export default function FooterBar() {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-4" disabled>
-            +52 (963) 632 6561
+            Telefono: +52 (963) 632 6561
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -35,6 +39,7 @@ export default function FooterBar() {
             arquitectosdecomitan@outlook.es
           </Nav.Link>
         </Nav.Item>
+        <hr />
       </Nav>
     </>
   );

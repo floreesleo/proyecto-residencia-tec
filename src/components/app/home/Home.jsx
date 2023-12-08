@@ -2,7 +2,7 @@ import NavBar from "../navegacion/Nav";
 import FooterBar from "../navegacion/Footer";
 
 // Bootstrap
-import { Container, Toast } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 // Componente para ver publicaciones
 import CardPublicaciones from "./../admin/publicaciones/CardPublicaciones";
@@ -24,22 +24,8 @@ export default function Home() {
         <h1>Inicio</h1>
         <hr />
         <Carrusel />
-        <CardPublicaciones />
-
         <hr />
-
-        <Toast>
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded me-2"
-              alt=""
-            />
-            <strong className="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-          </Toast.Header>
-          <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
-        </Toast>
+        <CardPublicaciones />
       </Container>
       <FooterBar />
     </>

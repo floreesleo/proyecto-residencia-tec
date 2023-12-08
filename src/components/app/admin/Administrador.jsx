@@ -1,85 +1,67 @@
 // Bootstrap
-import { Container, Button, Card, Accordion } from "react-bootstrap";
+import { Container, Button, Accordion, Tab, Tabs } from "react-bootstrap";
 
 // react-router-dom
 import { Link } from "react-router-dom";
+
+import CRUDPublicaciones from "./publicaciones/CRUDPublicaciones";
+import RegistrarAgremiado from "./agremiados/RegistrarAgremiado";
+import AgregarAgremiado from "./agremiados/AgregarAgremiado";
+import MesaDirectiva from "./agremiados/MesaDirectiva";
+import DatosColegio from "./datos-colegio/DatosColegio";
 
 export default function Administrador() {
   return (
     <>
       <Container className="text-center mt-3">
         <h1>Administrador | Colegio de arquitectos de Comitán</h1>
-        <Card>
-          <Card.Body>
+        <hr />
+        <Tabs
+          defaultActiveKey="home"
+          transition={false}
+          id="noanim-tab-example"
+          className="mb-3"
+          justify
+        >
+          <Tab eventKey="Publicaciones" title="Gestor de publicaciones">
+            <CRUDPublicaciones />
+          </Tab>
+          <Tab eventKey="profile" title="Agremiados">
             <Accordion>
-              <Accordion.Item
-                eventKey="0"
-                style={{ backgroundColor: "#bdc3c7" }}
-              >
-                <Accordion.Header>Publicaciones</Accordion.Header>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>Registrar agremiado</Accordion.Header>
                 <Accordion.Body>
-                  <Button
-                    variant="primary"
-                    as={Link}
-                    to="/crear-publicacion"
-                    className="w-100"
-                    style={{ fontSize: "16px" }}
-                  >
-                    Gestor de publicaciones
-                  </Button>
+                  <RegistrarAgremiado />
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item
-                eventKey="1"
-                style={{ backgroundColor: "#bdc3c7" }}
-              >
-                <Accordion.Header>Agremiados</Accordion.Header>
+              <Accordion.Item eventKey="1">
+                <Accordion.Header>Mesa directiva</Accordion.Header>
                 <Accordion.Body>
-                  <Button
-                    variant="primary"
-                    as={Link}
-                    to="/registrar-agremiado"
-                    className="mt-2 w-100"
-                    style={{ fontSize: "16px" }}
-                  >
-                    Registrar agremiado al gestor de documentos
-                  </Button>
-                  <br />
-                  <Button
-                    variant="success"
-                    as={Link}
-                    to="/agregar-agremiado"
-                    className="mt-2 w-100"
-                    style={{ fontSize: "16px" }}
-                  >
-                    Agregar agremiado a la aplicación
-                  </Button>
+                  <MesaDirectiva />
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item
-                eventKey="2"
-                style={{ backgroundColor: "#bdc3c7" }}
-              >
-                <Accordion.Header>Aplicación</Accordion.Header>
+              <Accordion.Item eventKey="2">
+                <Accordion.Header>Agregar agremiado</Accordion.Header>
                 <Accordion.Body>
-                  <Button
-                    variant="primary"
-                    as={Link}
-                    to="/datos-colegio"
-                    className="mt-2 w-100"
-                    style={{ fontSize: "16px" }}
-                  >
-                    Editar datos del colegio
-                  </Button>
+                  <AgregarAgremiado />
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
-            <hr />
-            <Button variant="link" as={Link} to="/perfil" className="w-100">
-              Perfil
-            </Button>
-          </Card.Body>
-        </Card>
+          </Tab>
+          <Tab eventKey="aplicacion" title="Aplicación">
+            <DatosColegio />
+          </Tab>
+        </Tabs>
+
+        <hr />
+        <Button
+          variant="outline-dark"
+          as={Link}
+          to="/perfil"
+          className="w-100 mb-5"
+        >
+          Perfil
+        </Button>
       </Container>
     </>
   );

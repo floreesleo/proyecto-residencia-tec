@@ -1,7 +1,5 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faAustralSign } from "@fortawesome/free-solid-svg-icons";
 
 import "./../../../assets/css/nav.css";
 
@@ -21,7 +19,6 @@ export default function NavBar() {
           className="titulo"
           style={{ fontSize: "1rem" }}
         >
-          {" "}
           Colegio de arquitectos de Comitán
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

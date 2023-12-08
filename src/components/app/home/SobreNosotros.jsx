@@ -31,6 +31,7 @@ export default function AboutUs() {
             </Card.Text>
           </Card.Body>
         </Card>
+
         <br />
         <Card>
           <Card.Body>

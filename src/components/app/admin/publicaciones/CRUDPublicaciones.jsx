@@ -4,9 +4,6 @@ import { useState } from "react";
 // Bootstrap
 import { Container, Button, Form, Card, Alert } from "react-bootstrap";
 
-// react-router-dom
-import { Link } from "react-router-dom";
-
 import { useNews } from "../../../../context/NewsContext";
 
 import ListaPublicaciones from "./ListaPublicaciones";
@@ -29,15 +26,6 @@ export default function CrearPublicacion() {
   return (
     <>
       <Container className="mt-3">
-        <Button
-          variant="outline-primary"
-          as={Link}
-          to="/administrador"
-          className="w-100"
-          style={{ fontSize: "16px" }}
-        >
-          Regresar
-        </Button>
         <Card className="mt-3">
           <Card.Body>
             <h1 className="text-center mb-4">Crear publicación</h1>

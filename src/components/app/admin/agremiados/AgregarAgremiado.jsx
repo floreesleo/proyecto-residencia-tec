@@ -1,26 +1,22 @@
-import { Card, Form, Button, Container, Accordion } from "react-bootstrap";
-
-import { Link } from "react-router-dom";
+import {
+  Card,
+  Form,
+  Button,
+  Container,
+  Accordion,
+  Alert,
+} from "react-bootstrap";
 
 export default function AgregarAgremiado() {
   return (
     <>
       <Container className="mt-3">
-        <Button
-          variant="outline-primary"
-          as={Link}
-          to="/administrador"
-          className="w-100"
-          style={{ fontSize: "16px" }}
-        >
-          Regresar
-        </Button>
         <Card className="mt-3">
           <Card.Body>
-            <h1 className="text-center mb-4">
-              Agregar agremiado a la aplicación
-            </h1>
-
+            <h1 className="mb-4">Agregar agremiado a la aplicación</h1>
+            <Alert variant="info" style={{ textAlign: "center" }}>
+              Agregar agremiado al apartado de "Agremiados" en la aplicación.
+            </Alert>
             {/* Formulario de SignUp */}
             <Form>
               {/* Nombre del agremiado */}
@@ -28,10 +24,7 @@ export default function AgregarAgremiado() {
                 <Form.Label>
                   Nombre completo del agremiado del agremiado
                 </Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Juan Carlos Torres Lopez"
-                />
+                <Form.Control type="text" placeholder="Nombre del agramiado" />
               </Form.Group>
 
               <hr />

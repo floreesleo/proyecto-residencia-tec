@@ -1,5 +1,12 @@
 // Bootstrap
-import { Container, Card, Button, Form, Alert } from "react-bootstrap";
+import {
+  Container,
+  Card,
+  Button,
+  Form,
+  Alert,
+  FloatingLabel,
+} from "react-bootstrap";
 
 // react-router-dom
 import { Link } from "react-router-dom";
@@ -19,11 +26,12 @@ export default function ResetPassword() {
   return (
     <>
       <Container className="mt-5">
-        <Card style={{ background: "#002161" }}>
+        <Card>
+          <Card.Header>Restablecer contraseña</Card.Header>
           <Card.Body>
-            <h1 className="text-center mb-4" style={{ color: "#fff" }}>
-              Restablecer contraseña
-            </h1>
+            <Alert variant="dark" style={{ textAlign: "center" }}>
+              Se enviará un correo a tú bandeja para restablecer tu contraseña.
+            </Alert>
             {messageResetPass && (
               <Alert variant="success">{messageResetPass}</Alert>
             )}
@@ -32,25 +40,21 @@ export default function ResetPassword() {
             {/* Formulario de restablecer contraseña */}
             <Form onSubmit={handleSubmit}>
               {/* Email */}
-              <Form.Group>
-                <Form.Label
-                  style={{
-                    color: "#fff",
-                    fontSize: "18px",
-                  }}
-                >
-                  Correo electronico
-                </Form.Label>
+              <FloatingLabel
+                controlId="floatingInput"
+                label="Correo electronico"
+                className="mb-3"
+              >
                 <Form.Control
                   type="email"
                   placeholder="ejemplo@dominio.com"
                   onChange={(ev) => setEmailRef(ev.target.value)}
                 />
-              </Form.Group>
+              </FloatingLabel>
 
               {/* Botón Sumbit */}
               <Form.Group>
-                <Button type="submit" className="mt-2 w-100" variant="primary">
+                <Button type="submit" className="mt-2 w-100" variant="success">
                   Restablecer contraseña
                 </Button>
               </Form.Group>
@@ -60,12 +64,7 @@ export default function ResetPassword() {
 
         {/* Contenedor de otros links */}
         <Container className="text-center">
-          <Button
-            variant="link"
-            as={Link}
-            to="/login"
-            style={{ fontSize: "16px" }}
-          >
+          <Button variant="link" as={Link} to="/login">
             Regresar
           </Button>
         </Container>
