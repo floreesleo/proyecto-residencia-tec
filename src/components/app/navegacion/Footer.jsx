@@ -4,12 +4,15 @@ export default function FooterBar() {
   return (
     <>
       <Nav
-        className="justify-content-center mb-2"
+        className="justify-content-center"
         variant="tabs"
         fixed="bottom"
+        style={{ backgroundColor: "#2f3640" }}
       >
         <Nav.Item>
-          <Nav.Link disabled>Colegio de arquitectos de Comitán</Nav.Link>
+          <Nav.Link disabled style={{ color: "#fff" }}>
+            Colegio de arquitectos de Comitán
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link
@@ -30,16 +33,15 @@ export default function FooterBar() {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-4" disabled>
+          <Nav.Link eventKey="link-4" disabled style={{ color: "#fff" }}>
             Telefono: +52 (963) 632 6561
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-4" disabled>
+          <Nav.Link eventKey="link-4" disabled style={{ color: "#fff" }}>
             arquitectosdecomitan@outlook.es
           </Nav.Link>
         </Nav.Item>
-        <hr />
       </Nav>
     </>
   );

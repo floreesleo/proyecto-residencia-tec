@@ -60,17 +60,6 @@ export default function CrearPublicacion() {
                 />
               </Form.Group>
 
-              {/* Link */}
-              <Form.Group className="mt-2">
-                <Form.Label>Link de la publicación</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Titulo"
-                  onChange={(ev) => setLink(ev.target.value)}
-                  value={link}
-                />
-              </Form.Group>
-
               {/* Botón Submit */}
               <Form.Group className="mt-2">
                 <Button type="submit" className="mt-2 w-100" variant="primary">
