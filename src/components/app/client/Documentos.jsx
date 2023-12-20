@@ -30,6 +30,8 @@ import {
   // useSession,
 } from "@supabase/auth-helpers-react";
 
+import { QRCodeSVG } from "qrcode.react";
+
 // URL donde está almacenada la base de datos de storage, módulo donde se suben documentos
 // https://uqfpbuoqfqebdwurfoer.supabase.co/storage/v1/object/public/documentos/05e281c3-be78-4933-8609-ed16f9cabce6/asdasdasd
 const CDNURL =
@@ -110,6 +112,12 @@ export default function Documentos() {
     }
   }
 
+  // CÓDIGO QR
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <NavBar />
@@ -155,11 +163,30 @@ export default function Documentos() {
                     >
                       Descargar documento
                     </Dropdown.Item>
+                    <Dropdown.Item onClick={handleShow}>
+                      Compartir por QR
+                    </Dropdown.Item>
                     <Dropdown.Item onClick={() => deleteDoc(documento.name)}>
                       Borrar documento
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
+
+                <Modal
+                  key={CDNURL + user.id + "/" + documento.name}
+                  show={show}
+                  onHide={handleClose}
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>Código QR | {documento.name}</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <QRCodeSVG
+                      value={CDNURL + user.id + "/" + documento.name}
+                      size="300"
+                    />
+                  </Modal.Body>
+                </Modal>
               </Col>
             );
           })}
@@ -205,6 +232,27 @@ export default function Documentos() {
           </Form>
         </Modal.Body>
       </Modal>
+
+      {/* {documentos.map((documento) => {
+        return (
+          // Obtiene como llave la url, el id del usuario y el nombde del documento
+          <Modal
+            key={CDNURL + user.id + "/" + documento.name}
+            show={show}
+            onHide={handleClose}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Código QR | {documento.name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <QRCodeSVG
+                value={CDNURL + user.id + "/" + documento.name}
+                size="300"
+              />
+            </Modal.Body>
+          </Modal>
+        );
+      })} */}
     </>
   );
 }
