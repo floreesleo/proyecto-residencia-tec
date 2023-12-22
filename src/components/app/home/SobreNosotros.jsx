@@ -93,8 +93,8 @@ export default function AboutUs() {
                 <Card.Text className="text-muted">{dato.direccion}</Card.Text>
                 <Iframe
                   url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3830.4229320624017!2d-92.14027174569578!3d16.250080334787377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858d38aefc6306cb%3A0xadbbfed923cd9e83!2sPrimera%20C.%20Sur%20Pte.%2046%2C%20Guadalupe%2C%2030020%20Comit%C3%A1n%20de%20Dom%C3%ADnguez%2C%20Chis.!5e0!3m2!1ses-419!2smx!4v1703034601574!5m2!1ses-419!2smx"
-                  width="600"
-                  height="450"
+                  width="100%"
+                  height="250"
                   loading="lazy"
                   allowFullScreen
                   style={{ border: 0 }}

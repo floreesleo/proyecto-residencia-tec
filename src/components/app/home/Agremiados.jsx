@@ -24,9 +24,7 @@ export default function Agremiados() {
         <Card>
           <Card.Body>
             <Card.Title>Agremiados</Card.Title>
-            <Row xs={1} lg={3} className="g-4">
-              <CardAgremiados />
-            </Row>
+            <CardAgremiados />
           </Card.Body>
         </Card>
       </Container>

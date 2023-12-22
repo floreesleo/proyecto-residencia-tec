@@ -16,7 +16,9 @@ export default function CardPublicaciones() {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       {publicaciones.map((publicacion) => (
         <Toast key={publicacion.id} className="mb-3">
           <Toast.Header closeButton={false}>

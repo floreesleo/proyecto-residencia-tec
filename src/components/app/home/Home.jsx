@@ -13,8 +13,6 @@ import Carrusel from "./Carrusel";
 // Estilos CSS de Home
 import "./../../../assets/css/home.css";
 
-import { QRCodeSVG } from "qrcode.react";
-
 export default function Home() {
   return (
     <>
@@ -29,7 +27,6 @@ export default function Home() {
         <hr />
         <CardPublicaciones />
       </Container>
-      <QRCodeSVG value="https://www.youtube.com/" />
       <FooterBar />
     </>
   );

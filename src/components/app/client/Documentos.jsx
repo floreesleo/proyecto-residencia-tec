@@ -50,9 +50,6 @@ export default function Documentos() {
   // constante del nombre del documento
   const [nombreDoc, setNombreDoc] = useState("");
 
-  // constante para habilitar o deshabilitar el input de file
-  const [disableFile, setDisableFile] = useState("");
-
   const docInputRef = useRef(null);
 
   useEffect(() => {
@@ -78,25 +75,17 @@ export default function Documentos() {
     }
   }
 
-  const nombreDocVacio = nombreDoc.trim() === "";
-
   async function uploadDoc(ev) {
-    if (nombreDocVacio) {
-      setDisableFile("disabled");
+    let doc = ev.target.files[0];
+
+    const { data, error } = await supabaseClient.storage
+      .from("documentos")
+      .upload(user.id + "/" + nombreDoc, doc);
+
+    if (data) {
+      getDocs();
     } else {
-      let doc = ev.target.files[0];
-
-      const { data, error } = await supabaseClient.storage
-        .from("documentos")
-        .upload(user.id + "/" + nombreDoc, doc);
-
-      if (data) {
-        getDocs();
-      } else {
-        console.error(error);
-      }
-
-      setDisableFile("");
+      console.error(error);
     }
   }
 
@@ -117,6 +106,8 @@ export default function Documentos() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // CÓDIGO PARA DESHABILITAR O HABILITAR EL INPUT FILE
 
   return (
     <>
@@ -199,6 +190,7 @@ export default function Documentos() {
         onHide={() => setShowFile(false)}
         dialogClassName="modal-90w"
         aria-labelledby="example-custom-modal-styling-title"
+        className="mt-5"
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-custom-modal-styling-title">
@@ -223,7 +215,7 @@ export default function Documentos() {
               <Form.Label>Seleccionar documento</Form.Label>
               <Form.Control
                 type="file"
-                onBeforeInput={disableFile}
+                // disabled
                 accept="image/png, image/jpge, image/jpg, .doc, .docx, .txt, .pdf"
                 onChange={(ev) => uploadDoc(ev)}
                 ref={docInputRef}
