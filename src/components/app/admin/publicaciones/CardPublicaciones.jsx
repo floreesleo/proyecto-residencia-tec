@@ -31,12 +31,12 @@ export default function CardPublicaciones() {
             <small style={{ color: "#b2bec3" }}>{publicacion.created_at}</small>
           </Toast.Header>
           <Toast.Body>
-            {publicacion.contenido}
-            <Row className="mt-2">
+            <Row className="mb-2">
               <Col col-xs={6} col-md={4}>
                 <Image src={publicacion.imagen} thumbnail />
               </Col>
             </Row>
+            {publicacion.contenido}
           </Toast.Body>
         </Toast>
       ))}
