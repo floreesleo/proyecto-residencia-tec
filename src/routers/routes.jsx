@@ -1,7 +1,7 @@
 // Navegación de la aplicación
 import { Routes, Route } from "react-router-dom";
 
-import NotFound from "./../components/app/home/NotFound";
+import NotFound from "./../pages/404";
 import Home from "./../components/app/home/Home";
 
 // Colegio
