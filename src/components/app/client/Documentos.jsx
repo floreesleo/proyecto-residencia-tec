@@ -107,8 +107,6 @@ export default function Documentos() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // CÓDIGO PARA DESHABILITAR O HABILITAR EL INPUT FILE
-
   return (
     <>
       <NavBar />
@@ -155,29 +153,13 @@ export default function Documentos() {
                       Descargar documento
                     </Dropdown.Item>
                     <Dropdown.Item onClick={handleShow}>
-                      Compartir por QR
+                      Mostrar código QR
                     </Dropdown.Item>
                     <Dropdown.Item onClick={() => deleteDoc(documento.name)}>
                       Borrar documento
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-
-                <Modal
-                  key={CDNURL + user.id + "/" + documento.name}
-                  show={show}
-                  onHide={handleClose}
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title>Código QR | {documento.name}</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <QRCodeSVG
-                      value={CDNURL + user.id + "/" + documento.name}
-                      size="300"
-                    />
-                  </Modal.Body>
-                </Modal>
               </Col>
             );
           })}
@@ -198,10 +180,12 @@ export default function Documentos() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Alert key="secondary" variant="secondary">
-            Primero debe dar un nombre al documento y luego seleccionar el
-            documento a subir.
-          </Alert>
+          <Container className="d-flex justify-content-center align-items-center">
+            <Alert key="secondary" variant="secondary" className="text-center">
+              Primero debe dar un nombre al documento y luego seleccionar el
+              documento a subir.
+            </Alert>
+          </Container>
           <Form>
             <Form.Group className="mb-2">
               <Form.Label>Nombre del documento</Form.Label>
@@ -215,7 +199,7 @@ export default function Documentos() {
               <Form.Label>Seleccionar documento</Form.Label>
               <Form.Control
                 type="file"
-                // disabled
+                disabled={nombreDoc.length === 0}
                 accept="image/png, image/jpge, image/jpg, .doc, .docx, .txt, .pdf"
                 onChange={(ev) => uploadDoc(ev)}
                 ref={docInputRef}
@@ -225,26 +209,37 @@ export default function Documentos() {
         </Modal.Body>
       </Modal>
 
-      {/* {documentos.map((documento) => {
+      {documentos.map((documento) => {
+        // obtiene todos los datos de la tabla "documentos" de supabase y se usa el nombre del documento y la URL para usarlos en el código QR
         return (
-          // Obtiene como llave la url, el id del usuario y el nombde del documento
           <Modal
             key={CDNURL + user.id + "/" + documento.name}
             show={show}
             onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+            size="sm"
+            className="mt-5"
           >
             <Modal.Header closeButton>
-              <Modal.Title>Código QR | {documento.name}</Modal.Title>
+              <Modal.Title>
+                Compartir documento por código QR | {documento.name}
+              </Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <QRCodeSVG
-                value={CDNURL + user.id + "/" + documento.name}
+                value={CDNURL + user.id + "/" + documento.name} // Obtiene la URL del archivo del usuario
                 size="300"
               />
             </Modal.Body>
+            <Modal.Footer>
+              <Button variant="dark" onClick={handleClose}>
+                Cerrar
+              </Button>
+            </Modal.Footer>
           </Modal>
         );
-      })} */}
+      })}
     </>
   );
 }
