@@ -9,7 +9,7 @@ import {
   Alert,
 } from "react-bootstrap";
 
-import { useArq } from "./../../../../context/ArqContext";
+import { useArq } from "../../../../../context/ArqContext";
 
 import { Link } from "react-router-dom";
 

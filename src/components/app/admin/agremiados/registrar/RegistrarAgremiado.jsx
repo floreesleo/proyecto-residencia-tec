@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 
 // AuthContext
-import { UserAuth } from "../../../../context/AuthContext";
+import { UserAuth } from "../../../../../context/AuthContext";
 
 export default function Registro() {
   // AuthContext

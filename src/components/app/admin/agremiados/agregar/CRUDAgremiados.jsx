@@ -1,5 +1,5 @@
 import { Card, Button, Container } from "react-bootstrap";
-import { useArq } from "./../../../../context/ArqContext";
+import { useArq } from "../../../../../context/ArqContext";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 

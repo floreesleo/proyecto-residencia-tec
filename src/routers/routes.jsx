@@ -23,9 +23,9 @@ import Sesion from "../components/app/client/Sesion";
 import Administrador from "./../components/app/admin/Administrador";
 import CrearPublicacion from "../components/app/admin/publicaciones/CrearPublicacion";
 import CRUDPublicacion from "../components/app/admin/publicaciones/CRUDPublicaciones";
-import Registro from "../components/app/admin/agremiados/RegistrarAgremiado";
-import Agremiado from "../components/app/admin/agremiados/AgregarAgremiado";
-import CRUDAgremiado from "../components/app/admin/agremiados/CRUDAgremiados";
+import Registro from "../components/app/admin/agremiados/registrar/RegistrarAgremiado";
+import Agremiado from "../components/app/admin/agremiados/agregar/AgregarAgremiado";
+import CRUDAgremiado from "../components/app/admin/agremiados/agregar/CRUDAgremiados";
 import DatosColegio from "../components/app/admin/datos-colegio/DatosColegio";
 
 export default function MyRoutes() {

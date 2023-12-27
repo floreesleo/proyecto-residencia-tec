@@ -4,8 +4,8 @@ import NavBar from "../navegacion/Nav";
 import { Container, Card, Row } from "react-bootstrap";
 
 // Tarjeta de publicaciones
-import CardAgremiados from "../admin/agremiados/CardAgremiados";
-import CardDirectivos from "../admin/agremiados/CardMesaDirectiva";
+import CardAgremiados from "../admin/agremiados/agregar/CardAgremiados";
+import CardDirectivos from "../admin/agremiados/mesa directiva/CardMesaDirectiva";
 
 export default function Agremiados() {
   return (

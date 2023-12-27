@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { Col, Card } from "react-bootstrap";
 
-import { useArq } from "./../../../../context/ArqContext";
+import { useArq } from "./../../../../../context/ArqContext";
 
 export default function CardMesaDirectiva() {
   const { getDirectivos, directivos } = useArq();

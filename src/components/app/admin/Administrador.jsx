@@ -5,9 +5,9 @@ import { Container, Button, Accordion, Tab, Tabs } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import CrearPublicaciones from "./publicaciones/CrearPublicacion";
-import RegistrarAgremiado from "./agremiados/RegistrarAgremiado";
-import AgregarAgremiado from "./agremiados/AgregarAgremiado";
-import MesaDirectiva from "./agremiados/MesaDirectiva";
+import RegistrarAgremiado from "./agremiados/registrar/RegistrarAgremiado";
+import AgregarAgremiado from "./agremiados/agregar/AgregarAgremiado";
+import MesaDirectiva from "./agremiados/mesa directiva/MesaDirectiva";
 import DatosColegio from "./datos-colegio/DatosColegio";
 
 export default function Administrador() {

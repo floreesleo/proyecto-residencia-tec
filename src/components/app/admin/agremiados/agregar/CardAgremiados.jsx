@@ -1,5 +1,5 @@
 import { Card, Col, Row } from "react-bootstrap";
-import { useArq } from "./../../../../context/ArqContext";
+import { useArq } from "../../../../../context/ArqContext";
 import { useEffect } from "react";
 
 export default function CardAgremiados() {

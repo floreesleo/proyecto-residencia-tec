@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { useArq } from "./../../../../context/ArqContext";
+import { useArq } from "../../../../../context/ArqContext";
 
 import { Container, Accordion, Card, Button } from "react-bootstrap";
 
