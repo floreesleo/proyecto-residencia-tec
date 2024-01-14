@@ -62,4 +62,4 @@ Actualmente, el proyecto está en desarrollo y se están añadiendo nuevas funci
 
 ## Contacto
 
-Si tienes preguntas o comentarios sobre el proyecto, contactame en [florees.leo@gmail.com] o [@floresleo]
+Si tienes preguntas o comentarios sobre el proyecto, contáctame en [florees.leo@gmail.com] o [@floresleo]
